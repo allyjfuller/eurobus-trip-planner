@@ -1,0 +1,22 @@
+{
+  "name": "eurobus-trip-planner",
+  "version": "1.0.0",
+  "description": "fullstack-capstone",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allyjfuller/eurobus-trip-planner.git"
+  },
+  "author": "Ally Fuller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allyjfuller/eurobus-trip-planner/issues"
+  },
+  "homepage": "https://github.com/allyjfuller/eurobus-trip-planner#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
