@@ -8,7 +8,7 @@ const passport = require('passport');
 
 const {router: usersRouter} = require('./users');
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
-const {router: tripsRouter} = require('./trips');
+const {router: tripRouter} = require('./trips');
 const {router: diaryRouter} = require('./travel-diary');
 
 //const {PORT, DATABASE_URL} = require('./config');
@@ -32,7 +32,7 @@ passport.use(jwtStrategy);
 
 app.use('/users/', usersRouter);
 app.use('/auth/', authRouter);
-app.use('/trips/', tripsRouter);
+app.use('/trips/', tripRouter);
 app.use('/travel-diary/', diaryRouter);
 
 // test route
