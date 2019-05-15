@@ -61,3 +61,42 @@ router.post('/', jsonParser, (req, res) => {
 	});
 	res.status(201).json(item);
 });
+
+router.put('/:id', , jsonParser, (req, res) => {
+	const requiredFields = ['destinationCity', 'travelDate', 'busCompany'];
+	for (let i=0; i<requiredFields.length; i++) {
+		const field = requiredFields[i];
+		if (!(field in req.body)) {
+			const message = `Missing ${field} in request body`
+			console.error(message);
+			return res.status(400).send(message);
+		}
+	}
+	if (req.params.id !== req.body.id) {
+		const message = `Request path id ${req.params.id} and request body id ${req.body.id} must match`;
+		console.error(message);
+		return res.status(400).send(message);
+	}
+	console.log(`Updating trip ${req.params.id}`);
+	Trip
+	.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
+	.exec()
+	.then(city => res.status(200).json(city))
+	.catch(err => {res.status(500).json({message: 'Server Error'});	
+	});
+});
+
+router.delete(':/id', (req, res) => {
+	Trip
+	.findByIdAndRemove(req.params.id)
+	.exec()
+	.then(() => res.status(204).end())
+	.catch(err => {res.status(500).json({message: 'Server Error'});
+	});
+});
+
+router.use('*', (req, res) => {
+	res.status(404).send('URL Not Found');
+});
+
+module.exports = {router};
