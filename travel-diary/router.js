@@ -1,46 +1,37 @@
-
 const express = require('express');
-
 const config = require('../config');
-
 const router = express.Router();
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const {Trip} = require('./models');
+const {travelDiary} = require('./models');
 
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-	Trip
+	travelDiary
 	.find()
-	.then(cities => {
-		res.status(200).json(cities)
-	})
+	.then(diaryPosts => {res.status(200).json(diaryPosts)})
 	.catch(err => {res.status(500).json({message: 'Server Error'});
 	})
 });
 
 router.get('/user/:user', passport.authenticate('jwt', {session: false}), (req, res) => {
-	Trip
-	.find()
-	.then(cities => {
-		res.status(200).json(cities)
-	})
+	travelDiary
+	.find({user: `${req.params.user}`})
+	.then(diaryPosts => {res.status(200).json(diaryPosts)})
 	.catch(err => {res.status(500).json({message: 'Server Error'});
 	})
 });
 
 router.get('/:id', (req, res) => {
-	Trip
+	travelDiary
 	.findById(req.params.id)
-	.then(city => res.status(200).json(city))
-	.catch(err => {
-		console.error(err);
-		res.status(500).json({message: 'Server Error'})
+	.then(diaryPosts => {res.status(200).json(diaryPosts)})
+	.catch(err => {res.status(500).json({message: 'Server Error'});
 	})
 });
 
 router.post('/', jsonParser, (req, res) => {
-	const requiredFields = ['user', 'destinationCity', 'travelDate', 'busCompany'];
+	const requiredFields = ['content'];
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
@@ -49,18 +40,16 @@ router.post('/', jsonParser, (req, res) => {
 			return res.status(400).send(message);
 		}
 	}
-	const item = Trip.create({
+	const item = travelDiary.create({
 		user: req.body.user,
-		destinationCity: req.body.destinationCity, 
-		travelDate: req.body.travelDate,
-		busCompany: req.body.busCompany,
-		comments: req.body.comments
+		content: req.body.content,
+		datePublished: req.body.datePublished
 	});
 	res.status(201).json(item);
 });
 
 router.put('/:id', jsonParser, (req, res) => {
-	const requiredFields = ['destinationCity', 'travelDate', 'busCompany'];
+	const requiredFields = ['content'];
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
@@ -74,20 +63,20 @@ router.put('/:id', jsonParser, (req, res) => {
 		console.error(message);
 		return res.status(400).send(message);
 	}
-	console.log(`Updating trip ${req.params.id}`);
-	Trip
+	console.log(`Updating travel diary ${req.params.id}`);
+	travelDiary
 	.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
-	.then(city => res.status(200).json(city))
-	.catch(err => {res.status(500).json({message: 'Server Error'});	
-	});
+	.then(diaryPosts => res.status(200).json(diaryPosts))
+	.catch(err => {res.status(500).json({message: 'Server Error'});
+	})
 });
 
-router.delete(':/id', (req, res) => {
-	Trip
-	.findByIdAndRemove(req.params.id)
-	.then(() => res.status(204).end())
-	.catch(err => {res.status(500).json({message: 'Server Error'});
-	});
+router.delete('/:id', (req, res) => {
+	travelDiary
+		.findByIdAndRemove(req.params.id)
+		.then(() => res.status(204).end())
+		.catch(err => {res.status(500).json({message: 'Server Error'});
+	})
 });
 
 router.use('*', (req, res) => {
@@ -95,3 +84,4 @@ router.use('*', (req, res) => {
 });
 
 module.exports = {router};
+

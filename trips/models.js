@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const tripSchema = mongoose.schema({
+const tripSchema = mongoose.Schema({
 	user: {type: String, required: true},
 	destinationCity: {type: String, required: true},
 	travelDate: {type: String, required: true},
