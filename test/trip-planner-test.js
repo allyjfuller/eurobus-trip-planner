@@ -124,7 +124,7 @@ describe('EuroBus Trip-planner API resourse', function() {
 
 	describe('Test all endpoints', function() {
 		beforeEach(function() {
-			return seedGardenData();
+			return seedTripData();
 		});
 		afterEach(function() {
 			return tearDownDb();
