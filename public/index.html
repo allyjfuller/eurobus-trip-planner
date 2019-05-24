@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EuroBus: Trip Planner</title>
     <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Mandali&display=swap" rel="stylesheet">
   </head>
  
   <body>
-  	<div>
+  	<div class="content">
   		<header>
   			<h1>EuroBus: Trip Planner</h1>
-  			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
+  			<a href="index.html" class="logout" style="display:none">Logout</a>
   		</header>
 
-  		<section>
+  		<section class="login-section">
   			<h2>Plan your next bus trip across Europe</h2>
-  			<button>Log In</button>
-  			<button>Register</button>
+  			<button type="submit" id="login-button">Log In</button>
+  			<button type="submit" id="register-button">Register</button>
   		</section>
 
   		<section>
@@ -32,7 +33,7 @@
   			</div>
   		</section>
 
-  		<section>
+  		<section id="login-page">
   			<h2>Log In</h2>
 
   			<form id="login-form">
@@ -41,6 +42,7 @@
 				<label for="password">Password:</label>
 				<input type="password" name="get-password" id="get-password" placeholder="password" required>
 				<button type="submit" id="sign-in">Sign In</button>
+				<button>Cancel</button>
 				<p>Not a member? Register <a href="#" id="register-link">here</a>.</p>
 			</form>
 		</section>
@@ -52,13 +54,14 @@
 				<input type="text" name="firstName" id="firstName" placeholder="First Name">
 				<label for="lastName">Last Name:</label>
 				<input type="text" name="lastName" id="lastName" placeholder="Last Name">
-				<label for="username">Select username:</label>
+				<label for="username">Username:</label>
 				<input type="text" name="username" id="username" placeholder="myname@gmail.com" required>
-				<label for="password">Enter password:  <span id="errorTenChar"></span></label>
+				<label for="password">Password:  <span id="errorTenChar"></span></label>
 				<input type="password" name="password" id="password" placeholder="password" required>
-				<label for="retype-password">Retype password:  <span id="errorMatchPass"></span></label>
+				<label for="retype-password">Confirm password:  <span id="errorMatchPass"></span></label>
 				<input type="password" name="retype-password" id="retype-password" placeholder="password" required>
 				<button type="submit" id="sign-up">Done</button>
+				<button>Cancel</button>
 			</form>
 		</section>
   	</div>
