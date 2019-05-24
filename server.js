@@ -13,6 +13,8 @@ const {router: diaryRouter} = require('./travel-diary');
 
 const {PORT, DATABASE_URL} = require('./config');
 
+app.use(express.static('public'));
+
 app.use(morgan('common'));
 
 //CORS
@@ -86,6 +88,3 @@ if (require.main === module) {
 }
 
 module.exports = {app, runServer, closeServer};
-
-//app.use(express.static('public'));
-//app.listen(process.env.PORT || 8080);

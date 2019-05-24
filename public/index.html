@@ -3,15 +3,67 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EuroBus Trip-planner</title>
+    <title>EuroBus: Trip Planner</title>
     <link rel="stylesheet" href="css/index.css">
   </head>
  
-
   <body>
-  Hello World!
+  	<div>
+  		<header>
+  			<h1>EuroBus: Trip Planner</h1>
+  			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
+  		</header>
 
+  		<section>
+  			<h2>Plan your next bus trip across Europe</h2>
+  			<button>Log In</button>
+  			<button>Register</button>
+  		</section>
+
+  		<section>
+  			<div>
+  				<p>Pick a city</p>
+  			</div>
+  			<div>
+  				<p>Pick a date</p>
+  			</div>
+  			<div>
+  				<p>Pick a bus</p>
+  			</div>
+  		</section>
+
+  		<section>
+  			<h2>Log In</h2>
+
+  			<form id="login-form">
+  				<label for="username">Username:</label>
+				<input type="text" name="get-username" id="get-username" placeholder="myname@gmail.com" required>
+				<label for="password">Password:</label>
+				<input type="password" name="get-password" id="get-password" placeholder="password" required>
+				<button type="submit" id="sign-in">Sign In</button>
+				<p>Not a member? Register <a href="#" id="register-link">here</a>.</p>
+			</form>
+		</section>
+
+		<section id="register-page">
+			<h2>Register</h2>
+			<form id="register-form">
+				<label for="firstName" required>First Name:</label>
+				<input type="text" name="firstName" id="firstName" placeholder="First Name">
+				<label for="lastName">Last Name:</label>
+				<input type="text" name="lastName" id="lastName" placeholder="Last Name">
+				<label for="username">Select username:</label>
+				<input type="text" name="username" id="username" placeholder="myname@gmail.com" required>
+				<label for="password">Enter password:  <span id="errorTenChar"></span></label>
+				<input type="password" name="password" id="password" placeholder="password" required>
+				<label for="retype-password">Retype password:  <span id="errorMatchPass"></span></label>
+				<input type="password" name="retype-password" id="retype-password" placeholder="password" required>
+				<button type="submit" id="sign-up">Done</button>
+			</form>
+		</section>
+  	</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="index.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   </body>
 </html>
