@@ -1,4 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+    /*  CHROME  */
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+}
+
+html body {
+	height: 100%;
+}
 
 body {
+	background-color: #F9F9F9;
+	color: #031051;
 	font-family: 'Mandali', sans-serif;
+	font-size: 18px;
+	display: flex;
+	flex-direction: column;
+}
+
+h1 img.logo {
+	height: 186px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+a {
+	text-decoration: none;
+	color: #890620;
+}
+
+button {
+	background-color: #E8C547;
+	color: #F9F9F9;
+	transition-duration: 0.6s;
+	height: 3em;
+	width: 8em;
+	margin-bottom: 1em;
+	font-family: 'Mandali', sans-serif;
+	text-align: center;
+	border-radius: 5px;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: #d6b540;	
+}
+
+form {
+	margin: 0 auto;
+	text-align: left;
+}
+
+input, textarea {
+	height: 2.5rem;
+	border-radius: 5px;
+	padding-left: 1em;
+	display: block;
+	width: 100%;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	font-family: 'Mandali', sans-serif;
+}
+
+/* log in section */
+
+.content {
+	flex: 1 0 auto;
+}
+
+.login-section, .detail-section, .affiliate-section {
+	text-align: center;
+}
+
+.login-section {
+	color: #FFFFFF;
+	background-image: url("../img/sicily.jpg");
+	padding-top: 6em;
+	padding-bottom: 10em;
+}
+
+.login-section h2 {
+	font-size: 36px;
+	padding-bottom: 1em;
+}
+
+.login-section p {
+	font-size: 1.5em;
+	padding-bottom: 1em;
+}
+
+.login-section button {
+	margin: 1em;
+}
+
+/* detail section */
+
+img.city,
+img.date,
+img.bus {
+	border-radius: 50%;
+	margin-top: 2em;
+	border: 3px solid #031051;
+}
+
+.detail-section p {
+	font-size: 14px;
+}
+
+/* affiliate section */
+
+.affiliate-section h1 {
+	font-size: 1.5em;
+	margin-top: 2em;
+}
+
+img.affiliates {
+	width: 90%;
 }

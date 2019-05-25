@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EuroBus: Trip Planner</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/col.css">
     <link href="https://fonts.googleapis.com/css?family=Mandali&display=swap" rel="stylesheet">
   </head>
  
   <body>
   	<div class="content">
-  		<header>
-  			<h1>EuroBus: Trip Planner</h1>
-  			<a href="index.html" class="logout" style="display:none">Logout</a>
+  		<header class="row">
+  			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo"></h1>
+  			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
   		</header>
 
   		<section class="login-section">
@@ -21,19 +22,32 @@
   			<button type="submit" id="register-button">Register</button>
   		</section>
 
-  		<section>
-  			<div>
-  				<p>Pick a city</p>
+  		<section class="row detail-section">
+  			<div class="col-4">
+  				<img src="img/city.png" alt="city" class="city">
+  				<h4>Pick a city</h4>
+  				<p>Details here</p>
   			</div>
-  			<div>
-  				<p>Pick a date</p>
+  			<div class="col-4">
+  				<img src="img/date.png" alt="date" class="date">
+  				<h4>Pick a date</h4>
+  				<p>Details here</p>
   			</div>
-  			<div>
-  				<p>Pick a bus</p>
+  			<div class="col-4">
+  				<img src="img/bus.png" alt="bus" class="bus">
+  				<h4>Pick a bus</h4>
+  				<p>Details here</p>
   			</div>
   		</section>
 
-  		<section id="login-page">
+  		<section class="row affiliate-section">
+  			<div>
+  				<h1>Our Affiliates</h1>
+  				<img src="img/affiliates.png" alt="affiliates" class="affiliates">
+  			</div>
+  		</section>
+
+  		<section class="row" id="login-page">
   			<h2>Log In</h2>
 
   			<form id="login-form">
@@ -47,7 +61,7 @@
 			</form>
 		</section>
 
-		<section id="register-page">
+		<section class="row" id="register-page">
 			<h2>Register</h2>
 			<form id="register-form">
 				<label for="firstName" required>First Name:</label>
