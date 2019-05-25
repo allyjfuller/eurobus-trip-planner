@@ -107,10 +107,11 @@ input, textarea {
 
 img.city,
 img.date,
-img.bus {
+img.bus,
+img.diary {
 	border-radius: 50%;
 	margin-top: 2em;
-	border: 3px solid #031051;
+	border: 1px solid #031051;
 }
 
 .detail-section p {
