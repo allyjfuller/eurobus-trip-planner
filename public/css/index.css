@@ -22,7 +22,7 @@ html body {
 body {
 	background-color: #F9F9F9;
 	color: #031051;
-	font-family: 'Mandali', sans-serif;
+	font-family: 'Quicksand', sans-serif;
 	font-size: 18px;
 	display: flex;
 	flex-direction: column;
@@ -31,7 +31,7 @@ body {
 h1 img.logo {
 	height: 186px;
 	padding-top: 0.5em;
-	padding-bottom: 0.5em;
+	padding-bottom: 0em;
 }
 
 a {
@@ -46,7 +46,7 @@ button {
 	height: 3em;
 	width: 8em;
 	margin-bottom: 1em;
-	font-family: 'Mandali', sans-serif;
+	font-family: 'Quicksand', sans-serif;
 	text-align: center;
 	border-radius: 5px;
 }
@@ -69,7 +69,32 @@ input, textarea {
 	width: 100%;
 	margin-bottom: 1em;
 	margin-top: 1em;
-	font-family: 'Mandali', sans-serif;
+	font-family: 'Quicksand', sans-serif;
+}
+
+ul.nav {
+	list-style-type: none;
+ 	margin: 0;
+  	padding: 0;
+  	margin-top: 7.5em;
+}
+
+li {
+  	float: right;
+}
+
+li a {
+  	display: block;
+  	color: #E8C547;
+  	text-align: center;
+  	padding: 14px 16px;
+  	text-decoration: none;
+  	transition-duration: 0.6s;
+}
+
+li a:hover {
+  cursor: pointer;
+  color: #d6b540;
 }
 
 /* log in section */
@@ -128,3 +153,49 @@ img.diary {
 img.affiliates {
 	width: 90%;
 }
+
+/* login/register */
+
+#login-form, #register-form {
+	margin: 0.5em;
+}
+
+#login-page, #register-page {
+	margin-top: 1em;
+	margin-bottom: 3em;
+	text-align: center;
+	border: 1px solid #031051;
+	border-radius: 5px;
+	width: 50%;
+}
+
+#login-page h2 {
+	font-size: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#register-page h2 {
+	font-size: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#login-page p {
+	margin-bottom: 0.5em;
+	font-size: 14px;
+}
+
+#sign-up,
+#sign-in {
+	margin-bottom: 1em;
+	display: block;
+	width: 100%;
+	margin-left: 0;
+}
+
+#errorTenChar,
+#errorMatchPass {
+	color: red;
+}
+

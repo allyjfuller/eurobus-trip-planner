@@ -6,14 +6,27 @@
     <title>EuroBus: Trip Planner</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/col.css">
-    <link href="https://fonts.googleapis.com/css?family=Mandali&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300&display=swap" rel="stylesheet">
   </head>
  
   <body>
-  	<div class="content">
+  	<div class="content" id="home">
   		<header class="row">
   			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo"></h1>
   			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
+  			<nav>
+  				<ul class="nav">
+  					<li>
+  						<a>FAQ</a>
+  					</li>
+  					<li>
+  						<a>Retailers</a>
+  					</li>
+  					<li>
+  						<a>Contact</a>
+  					</li>
+  				</ul>
+  			</nav>
   		</header>
 
   		<section class="login-section">
@@ -53,36 +66,75 @@
   		</section>
 
   		<section class="row" id="login-page">
-  			<h2>Log In</h2>
-
-  			<form id="login-form">
-  				<label for="username">Username:</label>
-				<input type="text" name="get-username" id="get-username" placeholder="myname@gmail.com" required>
-				<label for="password">Password:</label>
-				<input type="password" name="get-password" id="get-password" placeholder="password" required>
+			<h2>Log In</h2>
+			<form id="loginForm">
+				<label for="GET-username">Username:</label>
+				<input type="text" name="GET-username" id="GET-username" placeholder="myname@gmail.com" required>
+				<label for="GET-password">Password:</label>
+				<input type="password" name="GET-password" id="GET-password" placeholder="password" required>
+				<p>Not a member? Click <a href="#" id="register-link">here</a> to register.</p>
 				<button type="submit" id="sign-in">Sign In</button>
-				<button>Cancel</button>
-				<p>Not a member? Register <a href="#" id="register-link">here</a>.</p>
 			</form>
 		</section>
 
 		<section class="row" id="register-page">
 			<h2>Register</h2>
-			<form id="register-form">
+			<form id="registerForm">
 				<label for="firstName" required>First Name:</label>
 				<input type="text" name="firstName" id="firstName" placeholder="First Name">
 				<label for="lastName">Last Name:</label>
 				<input type="text" name="lastName" id="lastName" placeholder="Last Name">
-				<label for="username">Username:</label>
-				<input type="text" name="username" id="username" placeholder="myname@gmail.com" required>
-				<label for="password">Password:  <span id="errorTenChar"></span></label>
-				<input type="password" name="password" id="password" placeholder="password" required>
+				<label for="POST-username">Username:</label>
+				<input type="text" name="POST-username" id="POST-username" placeholder="myname@gmail.com" required>
+				<label for="POST-password">Password:  <span id="errorTenChar"></span></label>
+				<input type="password" name="POST-password" id="POST-password" placeholder="password" required>
 				<label for="retype-password">Confirm password:  <span id="errorMatchPass"></span></label>
 				<input type="password" name="retype-password" id="retype-password" placeholder="password" required>
-				<button type="submit" id="sign-up">Done</button>
-				<button>Cancel</button>
+				<button type="submit" id="sign-up">Register</button>
 			</form>
 		</section>
+
+		<section class="row home" style="display:none">
+			<h2>Hey <span id="showName"></span>, let's take a look at yout upcoming trips...</h2>
+		</section>
+
+		<section class="row tripDetails" style="display:none">
+			<div class="col-6 cityColumn">
+				<h2>EuroBus Trips</h2>
+				<button type="submit" id="add-city" class="homePageButtons">Add a city</button>
+				<button type="submit" id="cancel-add-city" class="homePageButtons" style="display:none">Cancel</button>
+
+				<form id="addDestinationCitySection" style="display:none" class="row">
+					<h3>Where do you want to go?</h3>
+					<label for="addDestinationCity">City:</label>
+					<input type="text" name="addDestinationCity" id="addDestinationCity" placeholder="Madrid" required>
+					<label for="addTravelDate">Travel Date:</label>
+					<input type="text" name="addTravelDate" id="addTravelDate" placeholder="mm/dd/yyyy" required>
+					<label for="addBusCompany">Bus Company:</label>
+					<input type="text" name="addBusCompany" id="addBusCompany" placeholder="FlixBus">
+					<label for="addComments">Comments:</label>
+					<input type="text" name="addComments" id="addComments" placeholder="No seat reservations, get there early.">
+					<button type="submit" id="addCityInfo" class="homePageButtons">Plan trip</button>
+				</form>
+
+				<div class="destinationCitySection"></div>
+			</div>
+
+			<div class="col-6 travelDiaryColumn">
+				<h2>Travel Diary</h2>
+				<button type="submit" id="add-diary-entry" class="homePageButtons">Add memory</button>
+				<button type="submit" id="cancel-diary-entry" class="homePageButtons" style="display:none">Cancel</button>
+
+				<form id="addTravelDiarySection" style="display:none" class="row">
+					<h3>Document your favorite travel stories</h3>
+					<textarea rows="5" type="text" name="newDiaryEntry" id="newDiaryEntry" placeholder="Write something" required></textarea>
+					<button type="submit" id="addTravelDiaryEntry" class="homePageButtons">Submit</button>
+				</form>
+
+				<div class="travelDiarySection col-6"></div>
+			</div>
+		</section>
+
   	</div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

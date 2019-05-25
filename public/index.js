@@ -338,11 +338,13 @@ $(document).ready(function() {
 	$("#register-page").hide();
 	$(".login-section").show();
 	$(".detail-section").show();
+	$(".affiliate-section").show();
 
 	$("#login-button").click(function() {
 		$("#register-page").hide();
 		$(".login-section").hide();
 		$(".detail-section").hide();
+		$(".affiliate-section").hide();
 		$("#login-page").show();
 	})
 
@@ -350,6 +352,7 @@ $(document).ready(function() {
 		$("#login-page").hide();
 		$(".login-section").hide();
 		$(".detail-section").hide();
+		$(".affiliate-section").hide();
 		$("#register-page").show();
 	}) 
 
@@ -357,6 +360,7 @@ $(document).ready(function() {
 		$("#login-page").hide();
 		$(".login-section").hide();
 		$(".detail-section").hide();
+		$(".affiliate-section").hide();
 		$("#register-page").show();
 	})
 
@@ -379,6 +383,7 @@ $(document).ready(function() {
 				$("#register-page").hide();
 				$(".login-section").hide();
 				$(".detail-section").hide();
+				$(".affiliate-section").hide();
 				$(".home").show();
 				$(".logout").show();
 				$(".tripDetails").show();
@@ -411,6 +416,7 @@ $(document).ready(function() {
 				$("#register-page").hide();
 				$(".login-section").hide();
 				$(".detail-section").hide();
+				$(".affiliate-section").hide();
 				$("#login-page").show();
 			},
 			error: function(err) {
