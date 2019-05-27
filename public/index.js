@@ -1,5 +1,5 @@
-let TRIP_URL = 'trip';
-let TRAVEL_DIARY_URL = 'travelDiary';
+let TRIP_URL = 'trips';
+let TRAVEL_DIARY_URL = 'travel-diary';
 let user = localStorage.getItem('currentUser');
 let date = new Date();
 
@@ -41,7 +41,7 @@ function showTripResults(tripArray) {
 	$('#showTripPlan').html(user);
 	let tripPlan = "";
 
-	$.each(cityArray, function (tripArrayKey, tripArrayValue) {
+	$.each(tripArray, function (tripArrayKey, tripArrayValue) {
 		tripPlan += `<div class="tripItem" data-id=${tripArrayValue._id}>` 
 		tripPlan += `<p class="destinationCity">${tripArrayValue.destinationCity}</p>`
 		tripPlan += `<div class="cityInfo" style="display:none">` 
@@ -57,7 +57,7 @@ function showTripResults(tripArray) {
 	});
 }
 
-function showTravelDiary(diaryArray) {
+function showTravelDiaryResults(diaryArray) {
 	let travelDiary = "";
 
 	$.each(diaryArray, function(diaryArrayKey, diaryArrayValue) {
@@ -107,7 +107,7 @@ function addTravelDiaryEntry(diaryPosts) {
 		data: JSON.stringify(diaryPosts),
 		success: function(data) {
 			console.log(data);
-			getJournal(data);
+			getTravelDiary(data);
 		},
 		error: function(err) {
 			console.log(err);
@@ -271,7 +271,7 @@ function handleAddDestinationCity() {
 function handleAddTravelDiary() {
 	$("#addTravelDiarySection").submit(function(e) {
 		e.preventDefault();
-		addDiaryEntry({
+		addTravelDiaryEntry({
 			user: user,
 			content: $(e.currentTarget).find('#newDiaryEntry').val(),
 			datePublished: date.toDateString()

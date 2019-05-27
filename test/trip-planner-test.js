@@ -14,12 +14,12 @@ chai.use(chaiHttp);
 
 let loginDetails = {
 	'username': 'test',
-	'password': 'test12345'
+	'password': 'testtest123'
 }
 
 let testUsername = 'test';
 
-let testPassword = 'test12345'
+let testPassword = 'testtest123'
 
 let authToken;
 
@@ -134,7 +134,7 @@ describe('EuroBus Trip-planner API resourse', function() {
 			let res;
 			console.log("authToken=" + authToken);
 			chai.request(app)
-				.get('/trip')
+				.get('/trips')
 				.set('Authorization', `Bearer ${authToken}`)
 				.then(function(_res) {
 					res = _res;
