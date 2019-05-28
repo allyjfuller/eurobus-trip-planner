@@ -38,7 +38,7 @@ function getTravelDiary() {
 }
 
 function showTripResults(tripArray) {
-	$('#showTripPlan').html(user);
+	$('#showName').html(user);
 	let tripPlan = "";
 
 	$.each(tripArray, function (tripArrayKey, tripArrayValue) {
@@ -74,8 +74,8 @@ function showTravelDiaryResults(diaryArray) {
 	})
 }
 
-function addDestinationCity(city) {
-	console.log('Adding city' + city);
+function addTripPlan(trip) {
+	console.log('Adding trip' + trip);
 	let authToken = localStorage.getItem('authToken');
 	$.ajax({
 		method: 'POST',
@@ -117,7 +117,7 @@ function addTravelDiaryEntry(diaryPosts) {
 	});
 }
 
-function updateDestinationCity(id, element) {
+function updateTripPlan(id, element) {
 	let authToken = localStorage.getItem('authToken');
 	$.ajax({
 		method: 'GET',
@@ -130,7 +130,7 @@ function updateDestinationCity(id, element) {
 			console.log(cityData);
 
 			let updateTemplate = `
-				<form class="row updateDestinatoinCitySection" data-id=${id}>
+				<form class="row updateTripPlanSection" data-id=${id}>
 					<h2>Update Destination City</h2><br>
 					<label for="updateDestinationCity">City:</label>
 					<input type="text" name="updateDestinationCity" class="updateDestinationCity" value=${cityData.destinationCity}>
@@ -250,20 +250,20 @@ function deleteDiaryEntry(id) {
 	});
 }
 
-function handleAddDestinationCity() {
-	$('#addDestinationCitySection').submit(function(e) {
+function handleAddTripPlan() {
+	$('#addTripPlan').submit(function(e) {
 	    e.preventDefault();
-	    addCity({
+	    addTripPlan({
 	    	user: user,
 	    	destinationCity: $(e.currentTarget).find('#addDestinationCity').val(),
 	    	travelDate: $(e.currentTarget).find('#addTravelDate').val(),
 	    	busCompany: $(e.currentTarget).find('#addBusCompany').val(),
 	    	comments: $(e.currentTarget).find('#addComments').val()
 	    });
-	    $("#addDestinationCitySection input[type='text']").val('');
-	    $(".updateDestinationCitySection").hide();
-		$("#addDestinationCitySection").hide();
-		$("#cancel-add-city").hide();
+	    $("#addTripPlanSection input[type='text']").val('');
+	    $(".updateTripPlanSection").hide();
+		$("#addTripPlanSection").hide();
+		$("#cancel-add-trip").hide();
 		$(".tripPlanSection").show();
   });
 }
@@ -436,8 +436,8 @@ $(document).ready(function() {
 	})
 
 	$(".updateDestinationCitySection").hide();
-	$("#addDestinationCitySection").hide();
-	$(".destinationCitySection").show();
+	$("#addTripPlanSection").hide();
+	$(".tripPlanSection").show();
 
 	$("body").on("click", ".destinationCity", function() {
 		console.log("you clicked the destination");
@@ -496,17 +496,17 @@ $(document).ready(function() {
 		console.log("travel diary updated")
 	})
 
-	$("#cancel-add-city").click(function() {
+	$("#cancel-add-trip").click(function() {
 		$("#addDestinationCitySection input[type='text']").val('');
 		$("#addDestinationCitySection").hide();
 		$("#cancel-add-city").hide();
 	})
 
-	$("#add-city").click(function() {
+	$("#add-trip").click(function() {
 		$(".updateDestinationCitySection").hide();
 		$("#cancel-add-city").show();
-		$("#destinationCitySection").show();
-		$("#addDestinationCity").show();
+		$("#tripPlanSection").show();
+		$("#addTripPlan").show();
 	})
 
 	$("#cancel-diary-entry").click(function() {
@@ -528,7 +528,7 @@ $(document).ready(function() {
 	});
 
 	$(function() {
-		handleAddDestinationCity();
+		handleAddTripPlan();
 		handleAddTravelDiary();
 		handleCityUpdate();
 		handleTravelDiaryDelete();
