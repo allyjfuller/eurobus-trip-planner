@@ -1,5 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const faker = require('faker');
 const mongoose = require('mongoose');
 
 const {Trip} = require('../trips/models');
@@ -7,8 +8,7 @@ const {tripDiary} = require('../travel-diary/models');
 const {app, runServer, closeServer} = require('../server');
 const {JWT_EXPIRY, JWT_SECRET, TEST_DATABASE_URL} = require('../config');
 
-const should = chai.should();
-const expect = chai.expect();
+const expect = chai.expect;
 
 chai.use(chaiHttp);
 
@@ -83,7 +83,7 @@ function tearDownDb() {
 }
 
 // TESTS
-describe('EuroBus Trip-planner API resourse', function() {
+describe('EuroBus Trip-planner API resource', function() {
 
 	before(function() {
 		return runServer(TEST_DATABASE_URL);
@@ -99,7 +99,7 @@ describe('EuroBus Trip-planner API resourse', function() {
 				.post('/users/')
 				.send(loginDetails)
 				.then(function(err, res) {
-					res.should.have.status(201);
+					expect(res).to.have.status(201);
 					chai.request(app)
 				})
 			done();
@@ -112,7 +112,7 @@ describe('EuroBus Trip-planner API resourse', function() {
 				.post('/auth/login')
 				.send(loginDetails)
 				.then(function(err, res) {
-					res.should.have.status(200);
+					expect(res).to.have.status(200);
 					authToken = res.body.authToken;
 					console.log("authToken at login =" + authToken);
 					// login
@@ -138,8 +138,8 @@ describe('EuroBus Trip-planner API resourse', function() {
 				.set('Authorization', `Bearer ${authToken}`)
 				.then(function(_res) {
 					res = _res;
-					res.should.have.status(200);
-					res.body.should.have.length.of.at.least(1);
+					expect(res).to.have.status(200);
+					expect(res.body.length).to.be.above(1);
 					return Trip.count();
 				})
 				.then(function(count) {
