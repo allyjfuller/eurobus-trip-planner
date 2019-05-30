@@ -334,8 +334,8 @@ function handleTravelDiaryDelete() {
 
 $(document).ready(function() {
 
-	$("#login-page").hide();
-	$("#register-page").hide();
+	$("#login-page").show();
+	$("#register-page").show();
 	$(".login-section").show();
 	$(".detail-section").show();
 	$(".affiliate-section").show();
@@ -379,7 +379,7 @@ $(document).ready(function() {
 				localStorage.setItem("authToken", data.authToken);
 				localStorage.setItem("currentUser", username);
 				user = username;
-				$("#login-page").hide();
+				$("#login-page").show();
 				$("#register-page").hide();
 				$(".login-section").hide();
 				$(".detail-section").hide();

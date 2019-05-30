@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/col.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+<div class="content" id="home">
+  <header class="row">
+  			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo"></h1>
+  			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
+  			<nav>
+  				<ul class="nav">
+  					<li>
+  						<a>FAQ</a>
+  					</li>
+  					<li>
+  						<a>Retailers</a>
+  					</li>
+  					<li>
+  						<a>Contact</a>
+  					</li>
+  				</ul>
+  			</nav>
+  		</header>
+<div class="content" id="home">
+  <section class="row tripDetails">
+			<div class="col-6 cityColumn">
+				<h2>EuroBus Trips</h2>
+				<button type="submit" id="add-trip" class="homePageButtons">Add a trip</button>
+				<button type="submit" id="cancel-add-trip" class="homePageButtons" style="display:none">Cancel</button>
+
+				<form id="tripPlanSection" style="display:none" class="row">
+					<h3>Where do you want to go?</h3>
+					<label for="addDestinationCity">City:</label>
+					<input type="text" name="addDestinationCity" id="addDestinationCity" placeholder="Madrid" required>
+					<label for="addTravelDate">Travel Date:</label>
+					<input type="text" name="addTravelDate" id="addTravelDate" placeholder="mm/dd/yyyy" required>
+					<label for="addBusCompany">Bus Company:</label>
+					<input type="text" name="addBusCompany" id="addBusCompany" placeholder="FlixBus">
+					<label for="addComments">Comments:</label>
+					<input type="text" name="addComments" id="addComments" placeholder="No seat reservations, get there early.">
+					<button type="submit" id="addTripPlan" class="homePageButtons">Plan trip</button>
+				</form>
+
+				<div class="tripPlanSection"></div>
+			</div>
+
+			<div class="col-6 travelDiaryColumn">
+				<h2>Travel Diary</h2>
+				<button type="submit" id="add-diary-entry" class="homePageButtons">Add memory</button>
+				<button type="submit" id="cancel-diary-entry" class="homePageButtons" style="display:none">Cancel</button>
+
+				<form id="addTravelDiarySection" style="display:none" class="row">
+					<h3>Document your favorite travel stories</h3>
+					<textarea rows="5" type="text" name="newDiaryEntry" id="newDiaryEntry" placeholder="Write something" required></textarea>
+					<button type="submit" id="addTravelDiaryEntry" class="homePageButtons">Submit</button>
+				</form>
+
+				<div class="travelDiarySection col-6"></div>
+			</div>
+		</section>
+
+  	</div>
+
+<!-- scripts -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="index.js"></script>
+  </body>
+</html>

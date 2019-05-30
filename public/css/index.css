@@ -36,12 +36,11 @@ h1 img.logo {
 
 a {
 	text-decoration: none;
-	color: #E8C547;
+	color: #FFFFFF;
 }
 
 button {
 	background-color: #E8C547;
-	color: #F9F9F9;
 	transition-duration: 0.6s;
 	height: 3em;
 	width: 8em;

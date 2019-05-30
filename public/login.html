@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/col.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+<div class="content" id="home">
+  <header class="row">
+  			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo"></h1>
+  			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
+  			<nav>
+  				<ul class="nav">
+  					<li>
+  						<a>FAQ</a>
+  					</li>
+  					<li>
+  						<a>Retailers</a>
+  					</li>
+  					<li>
+  						<a>Contact</a>
+  					</li>
+  				</ul>
+  			</nav>
+  		</header>
+<div class="content" id="home">
+  
+  <section class="row" id="login-page">
+			<h2>Log In</h2>
+			<form id="loginForm">
+				<label for="GET-username">Username:</label>
+				<input type="text" name="GET-username" id="GET-username" placeholder="myname@gmail.com" required>
+				<label for="GET-password">Password:</label>
+				<input type="password" name="GET-password" id="GET-password" placeholder="password" required>
+				<p>Not a member? Click <a href="#" id="register-link">here</a> to register.</p>
+				<button type="submit" id="sign-in"><a href="user-dash.html">Sign In</a></button>
+			</form>
+		</section>
+
+<!-- scripts -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="index.js"></script>
+  </body>
+</html>

@@ -31,8 +31,8 @@
 
   		<section class="login-section">
   			<h2>Plan your next bus trip across Europe</h2>
-  			<button type="submit" id="login-button">Log In</button>
-  			<button type="submit" id="register-button">Register</button>
+  			<button><a href="login.html">Log In</a></button>
+  			<button><a href="register.html">Register</a></button>
   		</section>
 
   		<section class="row detail-section">
@@ -64,79 +64,7 @@
   				<img src="img/affiliates.png" alt="affiliates" class="affiliates">
   			</div>
   		</section>
-
-  		<section class="row" id="login-page">
-			<h2>Log In</h2>
-			<form id="loginForm">
-				<label for="GET-username">Username:</label>
-				<input type="text" name="GET-username" id="GET-username" placeholder="myname@gmail.com" required>
-				<label for="GET-password">Password:</label>
-				<input type="password" name="GET-password" id="GET-password" placeholder="password" required>
-				<p>Not a member? Click <a href="#" id="register-link">here</a> to register.</p>
-				<button type="submit" id="sign-in">Sign In</button>
-			</form>
-		</section>
-
-		<section class="row" id="register-page">
-			<h2>Register</h2>
-			<form id="registerForm">
-				<label for="firstName" required>First Name:</label>
-				<input type="text" name="firstName" id="firstName" placeholder="First Name">
-				<label for="lastName">Last Name:</label>
-				<input type="text" name="lastName" id="lastName" placeholder="Last Name">
-				<label for="POST-username">Username:</label>
-				<input type="text" name="POST-username" id="POST-username" placeholder="myname@gmail.com" required>
-				<label for="POST-password">Password:  <span id="errorTenChar"></span></label>
-				<input type="password" name="POST-password" id="POST-password" placeholder="password" required>
-				<label for="retype-password">Confirm password:  <span id="errorMatchPass"></span></label>
-				<input type="password" name="retype-password" id="retype-password" placeholder="password" required>
-				<button type="submit" id="sign-up">Register</button>
-			</form>
-		</section>
-
-		<section class="row home" style="display:none">
-      <span id="showName"></span>
-			<h2>Let's take a look at your upcoming trips...</h2>
-		</section>
-
-		<section class="row tripDetails" style="display:none">
-			<div class="col-6 cityColumn">
-				<h2>EuroBus Trips</h2>
-				<button type="submit" id="add-trip" class="homePageButtons">Add a trip</button>
-				<button type="submit" id="cancel-add-trip" class="homePageButtons" style="display:none">Cancel</button>
-
-				<form id="tripPlanSection" style="display:none" class="row">
-					<h3>Where do you want to go?</h3>
-					<label for="addDestinationCity">City:</label>
-					<input type="text" name="addDestinationCity" id="addDestinationCity" placeholder="Madrid" required>
-					<label for="addTravelDate">Travel Date:</label>
-					<input type="text" name="addTravelDate" id="addTravelDate" placeholder="mm/dd/yyyy" required>
-					<label for="addBusCompany">Bus Company:</label>
-					<input type="text" name="addBusCompany" id="addBusCompany" placeholder="FlixBus">
-					<label for="addComments">Comments:</label>
-					<input type="text" name="addComments" id="addComments" placeholder="No seat reservations, get there early.">
-					<button type="submit" id="addTripPlan" class="homePageButtons">Plan trip</button>
-				</form>
-
-				<div class="tripPlanSection"></div>
-			</div>
-
-			<div class="col-6 travelDiaryColumn">
-				<h2>Travel Diary</h2>
-				<button type="submit" id="add-diary-entry" class="homePageButtons">Add memory</button>
-				<button type="submit" id="cancel-diary-entry" class="homePageButtons" style="display:none">Cancel</button>
-
-				<form id="addTravelDiarySection" style="display:none" class="row">
-					<h3>Document your favorite travel stories</h3>
-					<textarea rows="5" type="text" name="newDiaryEntry" id="newDiaryEntry" placeholder="Write something" required></textarea>
-					<button type="submit" id="addTravelDiaryEntry" class="homePageButtons">Submit</button>
-				</form>
-
-				<div class="travelDiarySection col-6"></div>
-			</div>
-		</section>
-
-  	</div>
+</div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="index.js"></script>
