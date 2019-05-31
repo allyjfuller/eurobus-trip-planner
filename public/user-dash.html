@@ -27,18 +27,22 @@
   				</ul>
   			</nav>
   		</header>
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Trip Planner')">Trip Planner</button>
-  <button class="tablinks" onclick="openTab(event, 'Travel Diary')">Travel Diary</button>
-</div>
 
 
 <div class="content" id="home">
+
+<!-- Tabs -->
+<div class="tab">
+  <button class="tablinks active" id="defaultOpen" onclick="openTab(event, 'trip-planner')">Trip Planner</button>
+  <button class="tablinks" onclick="openTab(event, 'travel-diary')">Travel Diary</button>
+</div>
+
+<!-- Trip Planner -->
+<div id="trip-planner" class="tabcontent">
   <section class="row tripDetails">
-			<div class="col-6 cityColumn">
+		<div class="col-6 tripColumn">
 				<h2>EuroBus Trips</h2>
 				<button type="submit" id="add-trip" class="homePageButtons">Add a trip</button>
-				<button type="submit" id="cancel-add-trip" class="homePageButtons" style="display:none">Cancel</button>
 
 				<form id="tripPlanSection" style="display:none" class="row">
 					<h3>Where do you want to go?</h3>
@@ -50,12 +54,20 @@
 					<input type="text" name="addBusCompany" id="addBusCompany" placeholder="FlixBus">
 					<label for="addComments">Comments:</label>
 					<input type="text" name="addComments" id="addComments" placeholder="No seat reservations, get there early.">
+          <button type="submit" id="cancel-add-trip" class="homePageButtons">Cancel</button>
 					<button type="submit" id="addTripPlan" class="homePageButtons">Plan trip</button>
 				</form>
 
-				<div class="tripPlanSection"></div>
-			</div>
+<!-- Planned Trips -->
+			<div class="tripPlanSection"></div>
+    </div>
+  </section>
+</div>
 
+
+<!-- Travel Diary -->
+  <div id="travel-diary" class="tabcontent">
+    <section class="row tripDetails">
 			<div class="col-6 travelDiaryColumn">
 				<h2>Travel Diary</h2>
 				<button type="submit" id="add-diary-entry" class="homePageButtons">Add memory</button>
@@ -67,15 +79,17 @@
 					<button type="submit" id="addTravelDiaryEntry" class="homePageButtons">Submit</button>
 				</form>
 
+<!-- Travel Diary Posts -->
 				<div class="travelDiarySection col-6"></div>
 			</div>
 		</section>
+  </div>
 
-  	</div>
+</div>
 
 <!-- scripts -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="index.js"></script>
+<script src="js/user-dash.js"></script>
   </body>
 </html>

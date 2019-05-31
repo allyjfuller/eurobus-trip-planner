@@ -225,10 +225,83 @@ img.affiliates {
 	margin-top: 1rem;
 }
 
-.cityColumn,
+.tripColumn,
 .travelDiaryColumn {
 	border-radius: 5px;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  background-color: #031051;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  float: left;
+  background-color: #031051;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 14px;
+  margin-bottom: 0px;
+  transition: 0.3s;
+  font-size: 18px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  color: #E8C547;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  color: #E8C547;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
+
+/* Trip Section */
+
+.tripDetails {
+	margin-top: 1rem;
+	height: 100%;
+}
+
+.tripDetails h2 {
+	display: inline-block;
+	font-size: 1.8rem;
+	margin-top: 1rem;
+}
+
+.tripColumn,
+.travelDiaryColumn {
+	border-radius: 5px;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.travelDiaryColumn {
+	background-color: #2C363F;
+	color: #F9F9F9;
+	box-shadow: 2px 2px grey;
+}
+
+.tripColumn {
+	margin-right: 1rem;
+	background-color: ;
+}
+
+.tripItem, {
+	margin-top: 1rem;
+	font-size: 1.2rem;
+	width: 100%;
 }
 
