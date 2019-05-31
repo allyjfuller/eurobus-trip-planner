@@ -36,11 +36,12 @@ h1 img.logo {
 
 a {
 	text-decoration: none;
-	color: #FFFFFF;
+	color: #E8C547;
 }
 
 button {
 	background-color: #E8C547;
+	color: #FFFFFF;
 	transition-duration: 0.6s;
 	height: 3em;
 	width: 8em;
@@ -106,7 +107,7 @@ li a:hover {
 	flex: 1 0 auto;
 }
 
-.login-section, .detail-section, .affiliate-section {
+.login-section, .feature-section, .affiliate-section {
 	text-align: center;
 }
 
@@ -131,7 +132,7 @@ li a:hover {
 	margin: 1em;
 }
 
-/* detail section */
+/* feature section */
 
 img.city,
 img.date,
@@ -142,7 +143,7 @@ img.diary {
 	border: 1px solid #031051;
 }
 
-.detail-section p {
+.feature-section p {
 	font-size: 14px;
 }
 
@@ -230,6 +231,4 @@ img.affiliates {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
-
-
 

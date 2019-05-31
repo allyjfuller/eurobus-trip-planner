@@ -14,18 +14,18 @@
 <!-- LOGO & TOP NAV -->
   <div class="content" id="home">
   		<header class="row">
-  			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo"></h1>
+  			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo" id="logo-button"></h1>
   			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
   			<nav>
   				<ul class="nav">
   					<li>
-  						<a>FAQ</a>
+  						<a type="submit" onclick="comingSoonAlert()">FAQ</a>
   					</li>
   					<li>
-  						<a>Retailers</a>
+  						<a type="submit" onclick="comingSoonAlert()">Retailers</a>
   					</li>
   					<li>
-  						<a>Contact</a>
+  						<a type="submit" onclick="comingSoonAlert()">Contact</a>
   					</li>
   				</ul>
   			</nav>
@@ -34,8 +34,8 @@
 <!-- LOGIN OR REGISTER BANNER -->
   		<section class="login-section">
   			<h2>Plan your next bus trip across Europe</h2>
-  			<button><a href="login.html">Log In</a></button>
-  			<button><a href="register.html">Register</a></button>
+  			<button type="submit" id="login-button">Log In</button>
+  			<button type="submit" id="register-button">Register</button>
   		</section>
 
 <!-- FEATURES -->
@@ -69,6 +69,7 @@
   				<img src="img/affiliates.png" alt="affiliates" class="affiliates">
   			</div>
   		</section>
+    </div>
 
 <!-- HIDDEN LOGIN AND REGISTER FORMS -->
       <section class="row" id="login-page">
@@ -79,8 +80,8 @@
         <label for="GET-password">Password:</label>
         <input type="password" name="GET-password" id="GET-password" placeholder="password" required>
         <button type="submit" id="sign-in">Sign In</button>
-        <p>Not a registered user?  <a href="#" id="register-link">Sign up</a> now!</p>
-        <p class="demo">Demo user info: <br>username: test <br>password: testtest123</p>
+        <p>Not a member? Register <a href="#" id="register-link">here</a>.</p>
+        <p class="demo">Demonstration Login<br>username: test <br>password: testtest123</p>
       </form>
     </section>
 
@@ -91,13 +92,13 @@
         <input type="text" name="firstName" id="firstName" placeholder="First Name">
         <label for="lastName">Last Name:</label>
         <input type="text" name="lastName" id="lastName" placeholder="Last Name">
-        <label for="POST-username">Select username:</label>
+        <label for="POST-username">Username:</label>
         <input type="text" name="POST-username" id="POST-username" placeholder="myname@gmail.com" required>
-        <label for="POST-password">Enter password:  <span id="errorTenChar"></span></label>
+        <label for="POST-password">Password:  <span id="errorTenChar"></span></label>
         <input type="password" name="POST-password" id="POST-password" placeholder="password" required>
-        <label for="retype-password">Retype password:  <span id="errorMatchPass"></span></label>
+        <label for="retype-password">Confirm Password:  <span id="errorMatchPass"></span></label>
         <input type="password" name="retype-password" id="retype-password" placeholder="password" required>
-        <button type="submit" id="sign-up">Sign-me up!</button>
+        <button type="submit" id="sign-up">Register</button>
       </form>
     </section>
 

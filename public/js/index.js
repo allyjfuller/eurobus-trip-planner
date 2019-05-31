@@ -3,6 +3,63 @@ let TRAVEL_DIARY_URL = 'travel-diary';
 let user = localStorage.getItem('currentUser');
 let date = new Date();
 
+function comingSoonAlert() {
+	alert("This feature is coming soon!");
+}
+
+$(document).ready(function(){
+
+	$("#login-page").hide();
+	$("#register-page").hide();
+	$(".login-section").show();
+	$(".feature-section").show();
+	$(".affiliate-section").show();
+
+	// when logo is clicked:
+
+	$("#logo-button").click(function() {
+		$("#login-page").hide();
+		$("#register-page").hide();
+		$(".login-section").show();
+		$(".feature-section").show();
+		$(".affiliate-section").show();
+	})
+
+	// when login button is clicked:
+
+	$("#login-button").click(function() {
+		$("#register-page").hide();
+		$(".login-section").hide();
+		$(".feature-section").hide();
+		$(".affiliate-section").hide();
+		$("#login-page").show();
+	})
+
+	// when register link is clicked:
+
+	$("#register-link").click(function() {
+		$("#login-page").hide();
+		$(".login-section").hide();
+		$(".feature-section").hide();
+		$(".affiliate-section").hide();
+		$("#register-page").show();
+	})
+
+	// when register button is clicked:
+
+	$("#register-button").click(function() {
+		$("#login-page").hide();
+		$(".login-section").hide();
+		$(".feature-section").hide();
+		$(".affiliate-section").hide();
+		$("#register-page").show();
+	})
+
+
+})
+
+
+/*
 function getTrip() {
 	console.log('Getting trip info')
 	let authToken = localStorage.getItem('authToken');
@@ -536,3 +593,5 @@ $(document).ready(function() {
 		handleTravelDiaryDelete();
 	});
 })
+
+*/
