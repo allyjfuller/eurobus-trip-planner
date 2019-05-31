@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300&display=swap" rel="stylesheet">
   </head>
  
-  <body>
-  	<div class="content" id="home">
+<body>
+  <div class="content" id="home">
   		<header class="row">
   			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo"></h1>
   			<a href="index.html" class="col-3 logout" style="display:none">Logout</a>
@@ -64,9 +64,40 @@
   				<img src="img/affiliates.png" alt="affiliates" class="affiliates">
   			</div>
   		</section>
+
+      <section class="row" id="login-page">
+        <h2>Log In</h2>
+        <form id="loginForm">
+        <label for="GET-username">Username:</label>
+        <input type="text" name="GET-username" id="GET-username" placeholder="myname@gmail.com" required>
+        <label for="GET-password">Password:</label>
+        <input type="password" name="GET-password" id="GET-password" placeholder="password" required>
+        <button type="submit" id="sign-in">Sign In</button>
+        <p>Not a registered user?  <a href="#" id="register-link">Sign up</a> now!</p>
+        <p class="demo">Demo user info: <br>username: test <br>password: testtest123</p>
+      </form>
+    </section>
+
+    <section class="row" id="register-page">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <label for="firstName" required>First Name:</label>
+        <input type="text" name="firstName" id="firstName" placeholder="First Name">
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+        <label for="POST-username">Select username:</label>
+        <input type="text" name="POST-username" id="POST-username" placeholder="myname@gmail.com" required>
+        <label for="POST-password">Enter password:  <span id="errorTenChar"></span></label>
+        <input type="password" name="POST-password" id="POST-password" placeholder="password" required>
+        <label for="retype-password">Retype password:  <span id="errorMatchPass"></span></label>
+        <input type="password" name="retype-password" id="retype-password" placeholder="password" required>
+        <button type="submit" id="sign-up">Sign-me up!</button>
+      </form>
+    </section>
+
 </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="index.js"></script>
+  <script src="js/index.js"></script>
   </body>
 </html>

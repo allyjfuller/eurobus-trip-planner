@@ -91,6 +91,10 @@ li a {
   	transition-duration: 0.6s;
 }
 
+a.logout {
+	color: #E8C547;
+}
+
 li a:hover {
   cursor: pointer;
   color: #d6b540;

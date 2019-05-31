@@ -255,15 +255,15 @@ function handleAddTripPlan() {
 	    e.preventDefault();
 	    addTripPlan({
 	    	user: user,
-	    	destinationCity: $(e.currentTarget).find('#addDestinationCity').val(),
-	    	travelDate: $(e.currentTarget).find('#addTravelDate').val(),
-	    	busCompany: $(e.currentTarget).find('#addBusCompany').val(),
-	    	comments: $(e.currentTarget).find('#addComments').val()
+	    	destinationCity: $(e.currentTarget).find('#destinationCity').val(),
+	    	travelDate: $(e.currentTarget).find('#travelDate').val(),
+	    	busCompany: $(e.currentTarget).find('#busCompany').val(),
+	    	comments: $(e.currentTarget).find('#comments').val()
 	    });
 	    $("#addTripPlanSection input[type='text']").val('');
 	    $(".updateTripPlanSection").hide();
-		$("#addTripPlanSection").hide();
-		$("#cancel-add-trip").hide();
+		$("#addTripPlanSection").show();
+		$("#cancel-add-trip").show();
 		$(".tripPlanSection").show();
   });
 }
@@ -436,7 +436,7 @@ $(document).ready(function() {
 	})
 
 	$(".updateDestinationCitySection").hide();
-	$("#addTripPlanSection").hide();
+	$("#addTripPlanSection").show();
 	$(".tripPlanSection").show();
 
 	$("body").on("click", ".destinationCity", function() {
@@ -499,11 +499,11 @@ $(document).ready(function() {
 	$("#cancel-add-trip").click(function() {
 		$("#addDestinationCitySection input[type='text']").val('');
 		$("#addDestinationCitySection").hide();
-		$("#cancel-add-city").hide();
+		$("#cancel-add-city").show();
 	})
 
 	$("#add-trip").click(function() {
-		$(".updateDestinationCitySection").hide();
+		$(".updateDestinationCitySection").show();
 		$("#cancel-add-city").show();
 		$("#tripPlanSection").show();
 		$("#addTripPlan").show();
