@@ -342,7 +342,7 @@ function handleTravelDiaryDelete() {
 		e.preventDefault();
 		deleteTravelDiaryEntry(
 			$(e.currentTarget).closest('.travelDiaryItem').attr('data-id'));
-	})
+	});
 }
 
 

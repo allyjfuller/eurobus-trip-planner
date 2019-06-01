@@ -1,0 +1,62 @@
+
+@media only screen and (max-width: 1200px) {
+
+h2 {
+  text-align: center;
+}
+
+span#showName {
+  display: block;
+}
+
+h1 {
+  text-align: center;
+
+
+#login-page, #register-page {
+  width: 90%;
+}
+
+
+#cancel-add-trip,
+#addTripInfo {
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+#cancel-add-trip {
+  margin-bottom: 5px;
+}
+
+button.updateTrip,
+button.updateTravelDiary {
+  margin-top: 8px;
+}
+
+button.updateTrip,
+button.deleteTrip,
+button.updateTravelDiary,
+button.deleteTravelDiary {
+  width: 92%;
+  margin-top: 5px;
+}
+
+button#updateTripInfo,
+button#cancel-update-trip {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+button#addTravelDiaryEntry,
+button#cancel-add-travel-diary{
+  width: 100%;
+}
+
+}
+
+
+
+
+@media only screen and (max-width: 568px) {
+  
+}

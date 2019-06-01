@@ -146,6 +146,11 @@ li a:hover {
 	margin: 1em;
 }
 
+p.demo {
+	text-align: center;
+	font-style: italic;
+}
+
 /* feature section */
 
 img.city,
@@ -450,3 +455,10 @@ button#updateTripInfo {
 	margin-bottom: 0px;
 }
 
+footer {
+	text-align: center;
+	font-size: 16px;
+	font-style: italic;
+	padding-top: 3em;
+	padding-bottom: 1em;
+}
