@@ -241,14 +241,14 @@ img.affiliates {
 }
 
 .tripPlanColumn {
-	background-color: #031051;
+	background-color: #F9F9F9;
 	color: #FFF;
-	padding-top: 1em;
 	border-radius: 5px;
 	margin-top: 5em;
 }
 
 .tripItem {
+	background-color: #031051;
 	padding-top: 1em;
 	padding-bottom: 1em;
 	padding-left: 1em;
