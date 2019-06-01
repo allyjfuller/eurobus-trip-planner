@@ -13,21 +13,11 @@
   <header class="row">
   			<h1 class="col-9"><img src="img/EuroBus-TP.png" alt="logo" class="logo"></h1>
   			<a href="index.html" class="col-3 logout">Logout</a>
-  			<nav>
-  				<ul class="nav">
-  					<li>
-  						<a>FAQ</a>
-  					</li>
-  					<li>
-  						<a>Retailers</a>
-  					</li>
-  					<li>
-  						<a>Contact</a>
-  					</li>
-  				</ul>
-  			</nav>
-  		</header>
+  </header>
 
+<section class="row home">
+      <h2><span id="showName"></span>'s Trip Dashboard</h2>
+</section>
 
 <div class="content" id="home">
 
@@ -44,7 +34,7 @@
 				<h2>EuroBus Trips</h2>
 				<button type="submit" id="add-trip" class="homePageButtons">Add a trip</button>
 
-				<form id="tripPlanSection" style="display:none" class="row">
+				<form id="addTripSection" style="display:none" class="row">
 					<h3>Where do you want to go?</h3>
 					<label for="addDestinationCity">City:</label>
 					<input type="text" name="addDestinationCity" id="addDestinationCity" placeholder="Madrid" required>
@@ -55,13 +45,16 @@
 					<label for="addComments">Comments:</label>
 					<input type="text" name="addComments" id="addComments" placeholder="No seat reservations, get there early.">
           <button type="submit" id="cancel-add-trip" class="homePageButtons">Cancel</button>
-					<button type="submit" id="addTripPlan" class="homePageButtons">Plan trip</button>
+					<button type="submit" id="addTripInfo" class="homePageButtons">Plan trip</button>
 				</form>
+    </div>
 
 <!-- Planned Trips -->
-			<div class="tripPlanSection"></div>
+    <div class="col-6 tripPlanColumn">
+			   <div class="tripPlanSection"></div>
     </div>
-  </section>
+</section>
+
 </div>
 
 
@@ -73,7 +66,7 @@
 				<button type="submit" id="add-diary-entry" class="homePageButtons">Add memory</button>
 				<button type="submit" id="cancel-diary-entry" class="homePageButtons" style="display:none">Cancel</button>
 
-				<form id="addTravelDiarySection" style="display:none" class="row">
+				<form id="addTravelDiarySection" style="display:none" class="row" novalidate>
 					<h3>Document your favorite travel stories</h3>
 					<textarea rows="5" type="text" name="newDiaryEntry" id="newDiaryEntry" placeholder="Write something" required></textarea>
 					<button type="submit" id="addTravelDiaryEntry" class="homePageButtons">Submit</button>
@@ -91,5 +84,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/user-dash.js"></script>
+<script src="js/tabs.js"></script>
   </body>
 </html>

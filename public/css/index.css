@@ -72,6 +72,13 @@ input, textarea {
 	font-family: 'Quicksand', sans-serif;
 }
 
+input::placeholder
+textarea::placeholder {
+	padding-left: 0.5rem;
+	font-style: italic;
+	color: #B2B5B9;
+}
+
 ul.nav {
 	list-style-type: none;
  	margin: 0;
@@ -84,7 +91,7 @@ li {
 }
 
 li a {
-  	display: block;
+  	display: inline-block;
   	color: #E8C547;
   	text-align: center;
   	padding: 14px 16px;
@@ -205,31 +212,75 @@ img.affiliates {
 }
 
 .home h2 {
-	padding-bottom: 1em;
-	
+	font-size: 1.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 
 .logout {
-	margin-top: 2rem;
+	margin-top: 2em;
 	text-align: right;
 }
 
 .tripDetails {
-	margin-top: 1rem;
+	margin-top: 1em;
 	height: 100%;
 }
 
 .tripDetails h2 {
 	/* display: inline-block; */
-	font-size: 1.8rem;
-	margin-top: 1rem;
+	font-size: 1.5em;
+	margin-top: 1em;
 }
 
 .tripColumn,
 .travelDiaryColumn {
 	border-radius: 5px;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.tripPlanColumn {
+	background-color: #031051;
+	color: #FFF;
+	padding-top: 1em;
+	border-radius: 5px;
+	margin-top: 5em;
+}
+
+.tripItem {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 1em;
+	margin-bottom: 1em;
+	border: 1px solid #FFF;
+	border-radius: 5px;
+}
+
+.destinationCity:hover,
+.journalDateAndTime:hover {
+	cursor: pointer;
+	color: #E8C547;
+}
+
+p.destinationCity {
+	font-size: 26px;
+	text-transform: uppercase;
+	transition-duration: 0.6s;
+}
+
+p.travelDate,
+p.busCompany,
+p.tripComments {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+button.updateTrip,
+button.deleteTrip {
+	margin-top: 1.5em;
+	margin-right: 1em;
+	margin-bottom: 0px;
 }
 
 /* Style the tab */
@@ -271,21 +322,22 @@ img.affiliates {
 /* Trip Section */
 
 .tripDetails {
-	margin-top: 1rem;
+	margin-top: 1em;
 	height: 100%;
 }
 
 .tripDetails h2 {
-	display: inline-block;
-	font-size: 1.8rem;
-	margin-top: 1rem;
+	font-size: 1.5em;
+	margin-top: .5em;
+	margin-bottom: 1em;
 }
 
 .tripColumn,
 .travelDiaryColumn {
+	display: block;
 	border-radius: 5px;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 .travelDiaryColumn {
@@ -295,13 +347,42 @@ img.affiliates {
 }
 
 .tripColumn {
-	margin-right: 1rem;
-	background-color: ;
+	margin-right: 1em;
+	display: block;
 }
 
 .tripItem, {
-	margin-top: 1rem;
-	font-size: 1.2rem;
+	margin-top: 1em;
+	font-size: 1.2em;
 	width: 100%;
+}
+
+form#addTripSection {
+	border: 1px solid #031051;
+	border-radius: 5px;
+	padding-bottom: 1em;
+}
+
+form#addTripSection h3{
+	text-align: center;
+	padding-top: 1.5em;
+}
+
+#tripPlanSection {
+	margin: 15px;
+	padding: 15px 15px;
+	background-color: #031051;
+	color: #FFF;
+	border-radius: 5px;
+}
+
+#tripPlanSection h3 {
+	text-align: center;
+}
+
+#cancel-add-trip,
+#addTripInfo {
+	width: 49.5%;
+	margin-bottom: 0px;
 }
 
