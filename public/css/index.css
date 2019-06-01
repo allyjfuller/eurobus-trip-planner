@@ -72,9 +72,16 @@ input, textarea {
 	font-family: 'Quicksand', sans-serif;
 }
 
-input::placeholder
-textarea::placeholder {
+input::placeholder {
 	padding-left: 0.5rem;
+	font-style: italic;
+	color: #B2B5B9;
+}
+
+textarea::placeholder {
+	padding-left: 0.2rem;
+	padding-top: 0.5rem;
+
 	font-style: italic;
 	color: #B2B5B9;
 }
@@ -233,21 +240,24 @@ img.affiliates {
 	margin-top: 1em;
 }
 
-.tripColumn,
-.travelDiaryColumn {
+.tripColumn {
 	border-radius: 5px;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
-.tripPlanColumn {
+.tripPlanColumn,
+.travelDiaryColumn {
 	background-color: #F9F9F9;
 	color: #FFF;
 	border-radius: 5px;
 	margin-top: 5em;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
-.tripItem {
+.tripItem,
+.travelDiaryItem {
 	background-color: #031051;
 	padding-top: 1em;
 	padding-bottom: 1em;
@@ -258,12 +268,13 @@ img.affiliates {
 }
 
 .destinationCity:hover,
-.journalDateAndTime:hover {
+.travelDiaryDateAndTime:hover {
 	cursor: pointer;
 	color: #E8C547;
 }
 
-p.destinationCity {
+p.destinationCity,
+p.travelDiaryDateAndTime {
 	font-size: 26px;
 	text-transform: uppercase;
 	transition-duration: 0.6s;
@@ -272,12 +283,22 @@ p.destinationCity {
 p.travelDate,
 p.busCompany,
 p.tripComments {
+	font-size: 18px;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
 }
 
+p.travelDiaryContent {
+	font-size: 16px;
+	margin-top: 1em;
+	margin-bottom: 1.5em;
+	font-style: italic;
+}
+
 button.updateTrip,
-button.deleteTrip {
+button.deleteTrip,
+button.updateTravelDiary,
+button.deleteTravelDiary {
 	margin-top: 1.5em;
 	margin-right: 1em;
 	margin-bottom: 0px;
@@ -333,7 +354,7 @@ button.deleteTrip {
 }
 
 .tripColumn,
-.travelDiaryColumn {
+.leftTravelDiaryColumn {
 	display: block;
 	border-radius: 5px;
 	margin-top: 1em;
@@ -341,9 +362,8 @@ button.deleteTrip {
 }
 
 .travelDiaryColumn {
-	background-color: #2C363F;
-	color: #F9F9F9;
-	box-shadow: 2px 2px grey;
+	background-color: #F9F9F9;
+	color: #FFF;
 }
 
 .tripColumn {
@@ -351,8 +371,9 @@ button.deleteTrip {
 	display: block;
 }
 
-.tripItem, {
-	margin-top: 1em;
+.tripItem,
+.travelDiaryItem {
+	
 	font-size: 1.2em;
 	width: 100%;
 }
@@ -363,9 +384,52 @@ form#addTripSection {
 	padding-bottom: 1em;
 }
 
-form#addTripSection h3{
+form#addTripSection h3 {
 	text-align: center;
 	padding-top: 1.5em;
+}
+
+form#addTravelDiarySection {
+	border: 1px solid #031051;
+	border-radius: 5px;
+	padding-bottom: 0px;
+}
+
+form#addTravelDiarySection h3 {
+	text-align: center;
+	padding-top: 1.5em;
+}
+form.updateTripSection,
+form.updateTravelDiarySection {
+	margin: 15px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 15px 15px;
+	padding-bottom: 0px;
+	background-color: #031051;
+	color: #FFF;
+	border-radius: 5px;
+}
+
+form.updateTripSection h2 {
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+
+form.updateTripSection label {
+	font-size: 16px;
+}
+
+.updateDestinationCity,
+.updateTravelDate,
+.updateBusCompany,
+.updateComments {
+	font-size: 16px;
+	margin: 15px 0px;
+}
+
+button#updateTripInfo {
+	margin-bottom: 15px;
 }
 
 #tripPlanSection {

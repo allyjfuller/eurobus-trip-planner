@@ -61,23 +61,25 @@
 <!-- Travel Diary -->
   <div id="travel-diary" class="tabcontent">
     <section class="row tripDetails">
-			<div class="col-6 travelDiaryColumn">
+			<div class="col-6 leftTravelDiaryColumn">
 				<h2>Travel Diary</h2>
-				<button type="submit" id="add-diary-entry" class="homePageButtons">Add memory</button>
-				<button type="submit" id="cancel-diary-entry" class="homePageButtons" style="display:none">Cancel</button>
+				<button type="submit" id="add-travel-diary-entry" class="homePageButtons">Add memory</button>
 
 				<form id="addTravelDiarySection" style="display:none" class="row" novalidate>
 					<h3>Document your favorite travel stories</h3>
-					<textarea rows="5" type="text" name="newDiaryEntry" id="newDiaryEntry" placeholder="Write something" required></textarea>
+					<textarea rows="5" type="text" name="newTravelDiaryEntry" id="newTravelDiaryEntry" placeholder="Write something" required></textarea>
+          <button type="submit" id="cancel-add-travel-diary" class="homePageButtons">Cancel</button>
 					<button type="submit" id="addTravelDiaryEntry" class="homePageButtons">Submit</button>
 				</form>
+      </div>
 
 <!-- Travel Diary Posts -->
-				<div class="travelDiarySection col-6"></div>
-			</div>
-		</section>
-  </div>
-
+    <div class="col-6 travelDiaryColumn">
+				<div class="travelDiarySection"></div>
+    </div>
+			
+    </div>
+  </section>
 </div>
 
 <!-- scripts -->

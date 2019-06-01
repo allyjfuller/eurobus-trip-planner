@@ -55,9 +55,27 @@ function getTravelDiary() {
 		contentType: 'application/json',
 		success: function(userData) {
 			console.log(userData);
-			//showTravelDiaryResults(userData);
+			showTravelDiary(userData);
 		}
 	});
+}
+
+// show travel diary
+function showTravelDiary(diaryArray) {
+	let travelDiary = "";
+
+	$.each(diaryArray, function(diaryArrayKey, diaryArrayValue) {
+		travelDiary += `<div class="travelDiaryItem" data-id=${diaryArrayValue._id}>`
+		travelDiary += `<p class="travelDiaryDateAndTime">${diaryArrayValue.datePublished}</p>`
+		travelDiary += `<div class="travelDiaryInfo" style="display:none">`
+		travelDiary += `<p class="travelDiaryContent">${diaryArrayValue.content}</p>`
+		travelDiary += `<button type="submit" class="updateTravelDiary homePageButtons">Update</button>`
+		travelDiary += `<button type="submit" class="deleteTravelDiary homePageButtons">Delete</button>`
+		travelDiary += `</div>`
+		travelDiary += `</div>`
+	
+		$('.travelDiarySection').html(travelDiary);
+	})
 }
 
 // add trip
@@ -101,6 +119,232 @@ function handleTripAdd() {
   });
 }
 
+// add diary
+function addTravelDiaryEntry(travelDiaryPosts) {
+	console.log('Adding travel diary post' + travelDiaryPosts);
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		method: 'POST',
+		url: TRAVEL_DIARY_URL,
+		headers: {
+			Authorization: `Bearer ${authToken}` 
+		},
+		data: JSON.stringify(travelDiaryPosts),
+		success: function(data) {
+			console.log(data);
+			getTravelDiary(data);
+		},
+		error: function(err) {
+			console.log(err);
+		},
+		dataType: 'json',
+		contentType: 'application/json'
+	});
+}
+
+function handleTravelDiaryAdd() {
+	$("#addTravelDiarySection").submit(function(e) {
+		e.preventDefault();
+		addTravelDiaryEntry({
+			user: user,
+			content: $(e.currentTarget).find('#newTravelDiaryEntry').val(),
+			datePublished: date.toDateString()
+		});
+		$("#addTravelDiarySection input[type='text']").val('');
+		$("#addTravelDiarySection").hide();
+		$(".updateTravelDiarySection").hide();
+		$("#add-travel-diary-entry").show();
+		$("#cancel-travel-diary-entry").hide();
+		$(".travelDiarySection").show();
+	})
+}
+
+// update trip
+function updateTripForm(id, element) {
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		method: 'GET',
+		url: `${TRIP_URL}/${id}`,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		contentType: 'application/json',
+		success: function(tripData) {
+			console.log(tripData);
+
+			let updateTemplate = `
+				<form class="row updateTripSection" data-id=${id}>
+					<h2>Update trip</h2><br>
+					<label for="updateDestinationCity">City:</label>
+					<input type="text" name="updateDestinationCity" class="updateDestinationCity" value=${tripData.destinationCity}>
+					<label for="updateTravelDate">Travel Date:</label>
+					<input type="text" name="updateTravelDate" class="updateTravelDate" value=${tripData.travelDate}>
+					<label for="updateTravelDate">Bus Company:</label>
+					<input type="text" name="updateBusCompany" class="updateBusCompany" value=${tripData.busCompany}>
+					<label for="updateComments">Comments:</label>
+					<input type="text" name="updateComments" class="updateComments" value=${tripData.comments}>
+					<button type="submit" id="cancel-update-trip" class="homePageButtons">Cancel</button>
+					<button type="submit" id="updateTripInfo" class="homePageButtons">Update</button>
+				</form>`
+			$(element).find(".tripInfo").hide();
+			$(element).after(updateTemplate);
+		}
+	});
+}
+
+function updateTrip(id, trip) {
+	console.log(`Updating trip ${id}`);
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		url: TRIP_URL + '/' + id,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		method: 'PUT',
+		dateType: 'json',
+		contentType: 'application/json',
+		data: JSON.stringify(trip),
+		success: function(data) {
+			getTrip(data);
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+}
+
+function handleTripUpdate() {
+	$('#updateTripInfo').on('click', function(e) {
+		console.log('you updated your trip');
+		e.preventDefault();
+		updateTrip({
+			user: user,
+			destinationCity: $(e.currentTarget).find('.updateDestinationCity').val(),
+			travelDate: $(e.currentTarget).find('.updateTravelDate').val(),
+			busCompany: $(e.currentTarget).find('.updateBusCompany').val(),
+			comments: $(e.currentTarget).find('.updateComments').val(),
+		});
+		$(".updateTripSection").hide();
+		$("#addTripSection").hide();
+		$("#tripPlanSection").show();
+	});
+}
+
+// update travel diary
+function updateTravelDiaryForm(id, element) {
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		method: 'GET',
+		url: `${TRAVEL_DIARY_URL}/${id}`,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		contentType: 'application/json',
+		success: function(travelDiaryData) {
+			console.log(travelDiaryData);
+
+			let updateTravelDiaryTemplate = `
+				<form class="row updateTravelDiarySection" data-id=${id}>
+					<label for="newTravelDiaryEntry">What happened on your trip?</label>
+					<input type="text" name="updateTravelDiaryEntry" class="updateTravelDiaryEntry" placeholder="Write something" required value=${travelDiaryData.content}>
+					<button type="submit" id="updateTravelDiaryInfo" class="homePageButtons">Update</button>
+				</form>`
+			$(element).find(".travelDiaryInfo").hide();
+			$(element).after(updateTravelDiaryTemplate);
+		}
+	});
+}
+
+function updateTravelDiary(id, travelDiaryPosts) {
+	console.log(`Updating travel diary entry ${id}`);
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		url: TRAVEL_DIARY_URL + '/' + id,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		method: 'PUT',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: JSON.stringify(travelDiaryPosts),
+		success: function(data) {
+			getTravelDiary(data);
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+}
+
+function handleTravelDiaryUpdate() {
+	$("#updateTravelDiary").on('click', function(e) {
+		alert('you updated your travel diary');
+		e.preventDefault();
+		updateTravelDiary({
+			user: user,
+			content: $(e.currentTarget).find('.updateTravelDiaryEntry').val(),
+			datePublished: date.toDateString()
+		});
+		$("updateTravelDiaryForm").hide();
+		$("addTravelDiarySection").hide();
+		$("travelDiarySection").show();
+	})
+}
+
+// delete trip
+function deleteTrip(id) {
+	console.log(`Deleting trip ${id}`);
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		url: TRIP_URL + '/' + id,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		method: 'DELETE',
+		success: function(data) {
+			getTrip(data);
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+}
+
+function handleTripDelete() {
+	$('.tripPlanSection').on('click', '.deleteTrip', function(e) {
+		e.preventDefault();
+		deleteTrip(
+			$(e.currentTarget).closest('.tripItem').attr('data-id'));
+	});
+}
+
+// delete travel diary entry
+function deleteTravelDiaryEntry(id) {
+	console.log(`Deleting travel diary entry ${id}`);
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		url: TRAVEL_DIARY_URL + '/' + id,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		method: 'DELETE',
+		success: function(data) {
+			getTravelDiary(data);
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+}
+
+function handleTravelDiaryDelete() {
+	$(".travelDiarySection").on('click', '.deleteTravelDiary', function(e) {
+		e.preventDefault();
+		deleteTravelDiaryEntry(
+			$(e.currentTarget).closest('.travelDiaryItem').attr('data-id'));
+	})
+}
+
 
 $(document).ready(function() {
 
@@ -134,10 +378,10 @@ $("body").on("click", ".destinationCity", function() {
 		$(this).parent().find(".tripInfo").slideToggle(300);
 	});
 
-$("body").on("click", ".diaryDateAndTime", function() {
+$("body").on("click", ".travelDiaryDateAndTime", function() {
 		console.log("you clicked the date and time");
 		event.preventDefault();
-		$(this).parent().find(".diaryInfo").slideToggle(300);
+		$(this).parent().find(".travelDiaryInfo").slideToggle(300);
 	})
 
 $("body").on("click", ".updateTrip", function() {
@@ -178,20 +422,26 @@ $("body").on("submit", ".updateTravelDiarySection", function(e) {
 		console.log(`you submitted updateTravelDiarySection for ${id}`);
 		let updatedTravelDiary = {
 			id: id,
-			content: $('.updateJournalEntry').val(),
+			content: $('.updateTravelDiaryEntry').val(),
 			datePublished: date.toDateString()
 		}
-		updateJournal(id, updatedTravelDiary);
+		updateTravelDiary(id, updatedTravelDiary);
 		console.log("travel diary updated")
+	})
+
+$("#add-travel-diary-entry").click(function() {
+		$("#add-travel-diary-entry").hide();
+		$("#cancel-travel-diary-entry").show();
+		$("#addTravelDiarySection").show();
 	})
 
 $(function() {
 		getTrip();
 		getTravelDiary();
 		handleTripAdd();
-		//handleJournalAdd();
-		//handlePlantUpdate();
-		//handleJournalUpdate();
-		//handlePlantDelete();
-		//handleJournalDelete();
+		handleTravelDiaryAdd();
+		handleTripUpdate();
+		handleTravelDiaryUpdate();
+		handleTripDelete();
+		handleTravelDiaryDelete();
 });
