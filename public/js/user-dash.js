@@ -353,7 +353,7 @@ $(document).ready(function() {
 		$(".updateTripSection").hide();
 		$("#add-trip").hide();
 		$("#cancel-add-trip").show();
-		$("#tripPlanSection").show();
+		$(".tripPlanSection").show();
 		$("#addTripSection").show();
 	})
 
