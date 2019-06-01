@@ -237,7 +237,7 @@ function deleteTrip(id) {
 			getTrip(data);
 		},
 		error: function(err) {
-			console.log(err);
+			console.log('Hello', err);
 		}
 	});
 }

@@ -73,7 +73,7 @@ router.put('/:id', jsonParser, (req, res) => {
 	});
 });
 
-router.delete(':/id', (req, res) => {
+router.delete('/:id', (req, res) => {
 	Trip
 	.findByIdAndRemove(req.params.id)
 	.then(() => res.status(204).end())
