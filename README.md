@@ -7,6 +7,7 @@ User: test@test.com
 Password: testtest123
 
 **About**
+
 _EuroBus: Trip-planner_ is a trip-planning app for anyone traveling by bus in Europe. Since traveling by bus isn't typically as common as traveling by train or plane, it can seem confusing and chaotic at times. EuroBus: Trip-planner helps you keep track of which cities you plan to visit, the dates you plan to travel, and the bus company you've booked your ticket with. You can even add comments to your trip in case you need to remember to pack a snack because the bus doesn't make stops, or if the bus stop is located somewhere random and you need to give yourself very specific directions.
 As an added bonus, the trip-planner also comes with a Travel Diary feature for recording your special travel memories.
 
@@ -30,6 +31,7 @@ _User Dashboard: Travel Diary_
 <img width="1205" alt="Screen Shot 2019-06-01 at 6 06 00 PM" src="https://user-images.githubusercontent.com/39098059/58754311-10e8cb80-849b-11e9-87cc-8203e90edaa3.png">
 
 **Tech Stack**
+
 _Client-side_
 
 - HTML
