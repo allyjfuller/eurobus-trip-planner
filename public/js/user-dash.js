@@ -234,7 +234,6 @@ function deleteTrip(id) {
 		},
 		method: 'DELETE',
 		success: function(data) {
-			console.log(data);
 			getTrip(data);
 		},
 		error: function(err) {
