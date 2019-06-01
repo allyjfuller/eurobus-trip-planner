@@ -285,16 +285,16 @@ function handleTravelDiaryAdd() {
 		e.preventDefault();
 		addTravelDiaryEntry({
 			user: user,
-			content: $(e.currentTarget).find('#newTravelDiaryEntry').val(),
+			content: $(e.currentTarget).find('#addTravelDiaryEntry').val(),
 			datePublished: date.toDateString()
 		});
-		$("#addTravelDiarySection input[type='text']").val('');
-		$("#addTravelDiarySection").hide();
+		$("#addTravelDiarySection textarea[type='text']").val('');
 		$(".updateTravelDiarySection").hide();
+		$("#addTravelDiarySection").hide();
 		$("#add-travel-diary-entry").show();
 		$("#cancel-travel-diary-entry").hide();
 		$(".travelDiarySection").show();
-	})
+	});
 }
 
 function handleTripUpdate() {
@@ -366,14 +366,15 @@ $(document).ready(function() {
 
 // when 'Add Memory' button is clicked:
 	$("#add-travel-diary-entry").click(function() {
+		$(".updateTravelDiarySection").hide();
 		$("#add-travel-diary-entry").hide();
 		$("#cancel-travel-diary-entry").show();
+		$(".travelDiarySection").show();
 		$("#addTravelDiarySection").show();
 	})
 
 // when 'Cancel' button is clicked:
 	$("#cancel-add-travel-diary").click(function() {
-		$("#addTravelDiarySection input[type='text']").val('');
 		$("#addTravelDiarySection").hide();
 		$("#cancel-add-travel-diary").hide();
 		$("#add-travel-diary-entry").show();
