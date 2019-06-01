@@ -1,8 +1,5 @@
-
 const express = require('express');
-
 const config = require('../config');
-
 const router = express.Router();
 const passport = require('passport');
 const bodyParser = require('body-parser');
@@ -12,19 +9,15 @@ const {Trip} = require('./models');
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Trip
 	.find()
-	.then(cities => {
-		res.status(200).json(cities)
-	})
+	.then(trips => {res.status(200).json(trips)})
 	.catch(err => {res.status(500).json({message: 'Server Error'});
 	})
 });
 
 router.get('/user/:user', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Trip
-	.find()
-	.then(cities => {
-		res.status(200).json(cities)
-	})
+	.find({user: `${req.params.user}`})
+	.then(trips => {res.status(200).json(trips)})
 	.catch(err => {res.status(500).json({message: 'Server Error'});
 	})
 });
@@ -32,10 +25,8 @@ router.get('/user/:user', passport.authenticate('jwt', {session: false}), (req, 
 router.get('/:id', (req, res) => {
 	Trip
 	.findById(req.params.id)
-	.then(city => res.status(200).json(city))
-	.catch(err => {
-		console.error(err);
-		res.status(500).json({message: 'Server Error'})
+	.then(trips => res.status(200).json(trips))
+	.catch(err => {res.status(500).json({message: 'Server Error'})
 	})
 });
 
@@ -77,7 +68,7 @@ router.put('/:id', jsonParser, (req, res) => {
 	console.log(`Updating trip ${req.params.id}`);
 	Trip
 	.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
-	.then(city => res.status(200).json(city))
+	.then(trips => res.status(200).json(trips))
 	.catch(err => {res.status(500).json({message: 'Server Error'});	
 	});
 });

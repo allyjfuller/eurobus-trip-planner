@@ -359,32 +359,28 @@ $(document).ready(function() {
 
 // when 'Cancel' button is clicked:
 	$("#cancel-add-trip").click(function() {
-		$("#addTripSection input[type='text']").val('');
-		$("#addTripSection").show();
 		$("#addTripSection").hide();
 		$("#cancel-add-plant").hide();
-		$("#tripPlanSection").hide();
 		$("#add-trip").show();
 	})
-})
 
 	$(".updateTripSection").hide();
 	$("#addTripSection").hide();
 	$(".tripPlanSection").show();
 
-$("body").on("click", ".destinationCity", function() {
+	$("body").on("click", ".destinationCity", function() {
 		console.log("you clicked the destination city");
 		event.preventDefault();
 		$(this).parent().find(".tripInfo").slideToggle(300);
 	});
 
-$("body").on("click", ".travelDiaryDateAndTime", function() {
+	$("body").on("click", ".travelDiaryDateAndTime", function() {
 		console.log("you clicked the date and time");
 		event.preventDefault();
 		$(this).parent().find(".travelDiaryInfo").slideToggle(300);
 	})
 
-$("body").on("click", ".updateTrip", function() {
+	$("body").on("click", ".updateTrip", function() {
 		console.log('you clicked update');
 		let trip = $(this).parent().parent();
 		let id = $(this).parent().parent().attr("data-id");
@@ -392,7 +388,7 @@ $("body").on("click", ".updateTrip", function() {
 		updateTripForm(id, trip);
 	})
 
-$("body").on("click", ".updateTravelDiary", function() {
+	$("body").on("click", ".updateTravelDiary", function() {
 		console.log('you clicked update')
 		let travelDiaryEntry = $(this).parent().parent();
 		console.log(travelDiaryEntry);
@@ -401,7 +397,7 @@ $("body").on("click", ".updateTravelDiary", function() {
 		updateTravelDiaryForm(id, travelDiaryEntry);
 	})
 
-$("body").on("submit", ".updateTripSection", function(e) {
+	$("body").on("submit", ".updateTripSection", function(e) {
 		e.preventDefault();
 		let id = $(this).attr("data-id")
 		console.log(`you submitted updateTripSection for ${id}`);
@@ -416,7 +412,7 @@ $("body").on("submit", ".updateTripSection", function(e) {
 		console.log("trip updated")
 	})
 
-$("body").on("submit", ".updateTravelDiarySection", function(e) {
+	$("body").on("submit", ".updateTravelDiarySection", function(e) {
 		e.preventDefault();
 		let id = $(this).attr("data-id")
 		console.log(`you submitted updateTravelDiarySection for ${id}`);
@@ -429,13 +425,13 @@ $("body").on("submit", ".updateTravelDiarySection", function(e) {
 		console.log("travel diary updated")
 	})
 
-$("#add-travel-diary-entry").click(function() {
+	$("#add-travel-diary-entry").click(function() {
 		$("#add-travel-diary-entry").hide();
 		$("#cancel-travel-diary-entry").show();
 		$("#addTravelDiarySection").show();
 	})
 
-$(function() {
+	$(function() {
 		getTrip();
 		getTravelDiary();
 		handleTripAdd();
@@ -444,4 +440,5 @@ $(function() {
 		handleTravelDiaryUpdate();
 		handleTripDelete();
 		handleTravelDiaryDelete();
+	})
 });

@@ -45,7 +45,7 @@
 					<input type="text" name="addBusCompany" id="addBusCompany" placeholder="FlixBus">
 					<label for="addComments">Comments:</label>
 					<input type="text" name="addComments" id="addComments" placeholder="No seat reservations, get there early.">
-          <button type="submit" id="cancel-add-trip" class="homePageButtons">Cancel</button>
+          <button id="cancel-add-trip">Cancel</button>
 					<button type="submit" id="addTripInfo" class="homePageButtons">Plan trip</button>
 				</form>
     </div>
@@ -66,7 +66,7 @@
 				<h2>Travel Diary</h2>
 				<button type="submit" id="add-travel-diary-entry" class="homePageButtons">Add memory</button>
 
-				<form id="addTravelDiarySection" style="display:none" class="row" novalidate>
+				<form id="addTravelDiarySection" style="display:none" class="row">
 					<h3>Document your favorite travel stories</h3>
 					<textarea rows="5" type="text" name="newTravelDiaryEntry" id="newTravelDiaryEntry" placeholder="Write something" required></textarea>
           <button type="submit" id="cancel-add-travel-diary" class="homePageButtons">Cancel</button>
