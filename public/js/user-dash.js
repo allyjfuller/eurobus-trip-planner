@@ -23,6 +23,24 @@ function getTrip() {
 	});
 }
 
+// retrieve user's travel diary info
+function getTravelDiary() {
+	console.log('Retrieving travel diary information')
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		method: 'GET',
+		url: `${TRAVEL_DIARY_URL}/user/${user}`,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		contentType: 'application/json',
+		success: function(userData) {
+			console.log(userData);
+			showTravelDiary(userData);
+		}
+	});
+}
+
 // show trip
 function showTrip(tripArray) {
 	let tripPlan = "";
@@ -39,24 +57,6 @@ function showTrip(tripArray) {
 		tripPlan += `</div>`
 		
 		$('.tripPlanSection').html(tripPlan);
-	});
-}
-
-// retrieve user's travel diary info
-function getTravelDiary() {
-	console.log('Retrieving travel diary information')
-	let authToken = localStorage.getItem('authToken');
-	$.ajax({
-		method: 'GET',
-		url: `${TRAVEL_DIARY_URL}/user/${user}`,
-		headers: {
-			Authorization: `Bearer ${authToken}`
-		},
-		contentType: 'application/json',
-		success: function(userData) {
-			console.log(userData);
-			showTravelDiary(userData);
-		}
 	});
 }
 
@@ -100,25 +100,6 @@ function addTrip(trip) {
 	});
 }
 
-function handleTripAdd() {
-	$('#addTripSection').submit(function(e) {
-	    e.preventDefault();
-	    addTrip({
-	    	user: user,
-	    	destinationCity: $(e.currentTarget).find('#addDestinationCity').val(),
-	    	travelDate: $(e.currentTarget).find('#addTravelDate').val(),
-	    	busCompany: $(e.currentTarget).find('#addBusCompany').val(),
-	    	comments: $(e.currentTarget).find('#addComments').val()
-	    });
-	    $("#addTripSection input[type='text']").val('');
-	    $(".updateTripSection").hide();
-		$("#addTripSection").hide();
-		$("#add-trip").show();
-		$("#cancel-add-trip").hide();
-		$(".tripPlanSection").show();
-  });
-}
-
 // add diary
 function addTravelDiaryEntry(travelDiaryPosts) {
 	console.log('Adding travel diary post' + travelDiaryPosts);
@@ -140,23 +121,6 @@ function addTravelDiaryEntry(travelDiaryPosts) {
 		dataType: 'json',
 		contentType: 'application/json'
 	});
-}
-
-function handleTravelDiaryAdd() {
-	$("#addTravelDiarySection").submit(function(e) {
-		e.preventDefault();
-		addTravelDiaryEntry({
-			user: user,
-			content: $(e.currentTarget).find('#newTravelDiaryEntry').val(),
-			datePublished: date.toDateString()
-		});
-		$("#addTravelDiarySection input[type='text']").val('');
-		$("#addTravelDiarySection").hide();
-		$(".updateTravelDiarySection").hide();
-		$("#add-travel-diary-entry").show();
-		$("#cancel-travel-diary-entry").hide();
-		$(".travelDiarySection").show();
-	})
 }
 
 // update trip
@@ -192,44 +156,6 @@ function updateTripForm(id, element) {
 	});
 }
 
-function updateTrip(id, trip) {
-	console.log(`Updating trip ${id}`);
-	let authToken = localStorage.getItem('authToken');
-	$.ajax({
-		url: TRIP_URL + '/' + id,
-		headers: {
-			Authorization: `Bearer ${authToken}`
-		},
-		method: 'PUT',
-		dateType: 'json',
-		contentType: 'application/json',
-		data: JSON.stringify(trip),
-		success: function(data) {
-			getTrip(data);
-		},
-		error: function(err) {
-			console.log(err);
-		}
-	});
-}
-
-function handleTripUpdate() {
-	$('#updateTripInfo').on('click', function(e) {
-		console.log('you updated your trip');
-		e.preventDefault();
-		updateTrip({
-			user: user,
-			destinationCity: $(e.currentTarget).find('.updateDestinationCity').val(),
-			travelDate: $(e.currentTarget).find('.updateTravelDate').val(),
-			busCompany: $(e.currentTarget).find('.updateBusCompany').val(),
-			comments: $(e.currentTarget).find('.updateComments').val(),
-		});
-		$(".updateTripSection").hide();
-		$("#addTripSection").hide();
-		$("#tripPlanSection").show();
-	});
-}
-
 // update travel diary
 function updateTravelDiaryForm(id, element) {
 	let authToken = localStorage.getItem('authToken');
@@ -255,6 +181,27 @@ function updateTravelDiaryForm(id, element) {
 	});
 }
 
+function updateTrip(id, trip) {
+	console.log(`Updating trip ${id}`);
+	let authToken = localStorage.getItem('authToken');
+	$.ajax({
+		url: TRIP_URL + '/' + id,
+		headers: {
+			Authorization: `Bearer ${authToken}`
+		},
+		method: 'PUT',
+		dateType: 'json',
+		contentType: 'application/json',
+		data: JSON.stringify(trip),
+		success: function(data) {
+			getTrip(data);
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+}
+
 function updateTravelDiary(id, travelDiaryPosts) {
 	console.log(`Updating travel diary entry ${id}`);
 	let authToken = localStorage.getItem('authToken');
@@ -276,21 +223,6 @@ function updateTravelDiary(id, travelDiaryPosts) {
 	});
 }
 
-function handleTravelDiaryUpdate() {
-	$("#updateTravelDiary").on('click', function(e) {
-		alert('you updated your travel diary');
-		e.preventDefault();
-		updateTravelDiary({
-			user: user,
-			content: $(e.currentTarget).find('.updateTravelDiaryEntry').val(),
-			datePublished: date.toDateString()
-		});
-		$("updateTravelDiaryForm").hide();
-		$("addTravelDiarySection").hide();
-		$("travelDiarySection").show();
-	})
-}
-
 // delete trip
 function deleteTrip(id) {
 	console.log(`Deleting trip ${id}`);
@@ -302,19 +234,12 @@ function deleteTrip(id) {
 		},
 		method: 'DELETE',
 		success: function(data) {
+			console.log(data);
 			getTrip(data);
 		},
 		error: function(err) {
 			console.log(err);
 		}
-	});
-}
-
-function handleTripDelete() {
-	$('.tripPlanSection').on('click', '.deleteTrip', function(e) {
-		e.preventDefault();
-		deleteTrip(
-			$(e.currentTarget).closest('.tripItem').attr('data-id'));
 	});
 }
 
@@ -334,6 +259,82 @@ function deleteTravelDiaryEntry(id) {
 		error: function(err) {
 			console.log(err);
 		}
+	});
+}
+
+function handleTripAdd() {
+	$('#addTripSection').submit(function(e) {
+	    e.preventDefault();
+	    addTrip({
+	    	user: user,
+	    	destinationCity: $(e.currentTarget).find('#addDestinationCity').val(),
+	    	travelDate: $(e.currentTarget).find('#addTravelDate').val(),
+	    	busCompany: $(e.currentTarget).find('#addBusCompany').val(),
+	    	comments: $(e.currentTarget).find('#addComments').val()
+	    });
+	    $("#addTripSection input[type='text']").val('');
+	    $(".updateTripSection").hide();
+		$("#addTripSection").hide();
+		$("#add-trip").show();
+		$("#cancel-add-trip").hide();
+		$(".tripPlanSection").show();
+  });
+}
+
+function handleTravelDiaryAdd() {
+	$("#addTravelDiarySection").submit(function(e) {
+		e.preventDefault();
+		addTravelDiaryEntry({
+			user: user,
+			content: $(e.currentTarget).find('#newTravelDiaryEntry').val(),
+			datePublished: date.toDateString()
+		});
+		$("#addTravelDiarySection input[type='text']").val('');
+		$("#addTravelDiarySection").hide();
+		$(".updateTravelDiarySection").hide();
+		$("#add-travel-diary-entry").show();
+		$("#cancel-travel-diary-entry").hide();
+		$(".travelDiarySection").show();
+	})
+}
+
+function handleTripUpdate() {
+	$('#updateTripInfo').on('click', function(e) {
+		console.log('you updated your trip');
+		e.preventDefault();
+		updateTrip({
+			user: user,
+			destinationCity: $(e.currentTarget).find('.updateDestinationCity').val(),
+			travelDate: $(e.currentTarget).find('.updateTravelDate').val(),
+			busCompany: $(e.currentTarget).find('.updateBusCompany').val(),
+			comments: $(e.currentTarget).find('.updateComments').val(),
+		});
+		$(".updateTripSection").hide();
+		$("#addTripSection").hide();
+		$("#tripPlanSection").show();
+	});
+}
+
+function handleTravelDiaryUpdate() {
+	$("#updateTravelDiary").on('click', function(e) {
+		alert('you updated your travel diary');
+		e.preventDefault();
+		updateTravelDiary({
+			user: user,
+			content: $(e.currentTarget).find('.updateTravelDiaryEntry').val(),
+			datePublished: date.toDateString()
+		});
+		$("updateTravelDiaryForm").hide();
+		$("addTravelDiarySection").hide();
+		$("travelDiarySection").show();
+	})
+}
+
+function handleTripDelete() {
+	$('.tripPlanSection').on('click', '.deleteTrip', function(e) {
+		e.preventDefault();
+		deleteTrip(
+			$(e.currentTarget).closest('.tripItem').attr('data-id'));
 	});
 }
 

@@ -87,7 +87,7 @@ router.delete(':/id', (req, res) => {
 	.findByIdAndRemove(req.params.id)
 	.then(() => res.status(204).end())
 	.catch(err => {res.status(500).json({message: 'Server Error'});
-	});
+	})
 });
 
 router.use('*', (req, res) => {
