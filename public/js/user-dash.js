@@ -171,7 +171,7 @@ function updateTravelDiaryForm(id, element) {
 
 			let updateTravelDiaryTemplate = `
 				<form class="row updateTravelDiarySection" data-id=${id}>
-					<label for="newTravelDiaryEntry">What happened on your trip?</label>
+					<label for="newTravelDiaryEntry">Document your favorite travel stories</label>
 					<input type="text" name="updateTravelDiaryEntry" class="updateTravelDiaryEntry" placeholder="Write something" required value=${travelDiaryData.content}>
 					<button type="submit" id="updateTravelDiaryInfo" class="homePageButtons">Update</button>
 				</form>`
@@ -364,22 +364,41 @@ $(document).ready(function() {
 		$("#add-trip").show();
 	})
 
+// when 'Add Memory' button is clicked:
+	$("#add-travel-diary-entry").click(function() {
+		$("#add-travel-diary-entry").hide();
+		$("#cancel-travel-diary-entry").show();
+		$("#addTravelDiarySection").show();
+	})
+
+// when 'Cancel' button is clicked:
+	$("#cancel-add-travel-diary").click(function() {
+		$("#addTravelDiarySection input[type='text']").val('');
+		$("#addTravelDiarySection").hide();
+		$("#cancel-add-travel-diary").hide();
+		$("#add-travel-diary-entry").show();
+	})
+
+// hide the update form, the new trip form, and shows the trip plans
 	$(".updateTripSection").hide();
 	$("#addTripSection").hide();
 	$(".tripPlanSection").show();
 
+// when you click the name of the city it reveals the whole plan
 	$("body").on("click", ".destinationCity", function() {
 		console.log("you clicked the destination city");
 		event.preventDefault();
 		$(this).parent().find(".tripInfo").slideToggle(300);
 	});
 
+// when you click the date of the entry it reveals the contents
 	$("body").on("click", ".travelDiaryDateAndTime", function() {
 		console.log("you clicked the date and time");
 		event.preventDefault();
 		$(this).parent().find(".travelDiaryInfo").slideToggle(300);
 	})
 
+// when you click the update trip button it brings up the update form
 	$("body").on("click", ".updateTrip", function() {
 		console.log('you clicked update');
 		let trip = $(this).parent().parent();
@@ -388,6 +407,7 @@ $(document).ready(function() {
 		updateTripForm(id, trip);
 	})
 
+// when you click the update diary button it lets you edit your entry
 	$("body").on("click", ".updateTravelDiary", function() {
 		console.log('you clicked update')
 		let travelDiaryEntry = $(this).parent().parent();
@@ -397,6 +417,7 @@ $(document).ready(function() {
 		updateTravelDiaryForm(id, travelDiaryEntry);
 	})
 
+// when you submit the trip update
 	$("body").on("submit", ".updateTripSection", function(e) {
 		e.preventDefault();
 		let id = $(this).attr("data-id")
@@ -412,6 +433,7 @@ $(document).ready(function() {
 		console.log("trip updated")
 	})
 
+// when you submit the diary update
 	$("body").on("submit", ".updateTravelDiarySection", function(e) {
 		e.preventDefault();
 		let id = $(this).attr("data-id")
@@ -423,12 +445,6 @@ $(document).ready(function() {
 		}
 		updateTravelDiary(id, updatedTravelDiary);
 		console.log("travel diary updated")
-	})
-
-	$("#add-travel-diary-entry").click(function() {
-		$("#add-travel-diary-entry").hide();
-		$("#cancel-travel-diary-entry").show();
-		$("#addTravelDiarySection").show();
 	})
 
 	$(function() {
